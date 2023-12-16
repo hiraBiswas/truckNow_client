@@ -7,57 +7,51 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { addDays } from 'date-fns';
 import { useContext } from "react";
-import { differenceInHours, parseISO ,parse, format , isValid} from 'date-fns';
+import { differenceInHours,parse, format , isValid} from 'date-fns';
 
 
 
 const RentForm = () => {
-    const { user, signIn, loading } = useContext(AuthContext);
+    const { user,  loading } = useContext(AuthContext);
     const truckDetails = useLoaderData();
-    const { _id, img, quantity, category, brand, name, rent } = truckDetails;
+    const { name, rent } = truckDetails;
     console.log(truckDetails, user)
-    const buyerName = user?.displayName || '';
-    const buyerEmail = user?.email || '';
+   
 
     
     const today = new Date();
     const minimumDate = addDays(today, 0);
     const maximumDate = addDays(today, 6);
+    
+    const renterName = user?.displayName || '';
+        const renterEmail = user?.email || '';
 
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
-
+    const [totalRent, setTotalRent] = useState(null);
     const handleRent = (event) => {
-        event.preventDefault();
-        // const form = event.target;
-        // const name = form.name.value;
-        // const rent = form.rent.value;
-        // const startDate = form.startDate.value;
-        // const endDate = form.endDate.value;
-        // const renterName = form.renterName.value;
-        // const renterEmail = form.renterEmail.value;
-        // const address = form.address.value;
-        // const truck_id = truckDetails._id;
         event.preventDefault();
         const form = event.target;
         const nameInput = form.querySelector('input[name="name"]');
-        const rentInput = form.querySelector('input[name="rent"]');
         const startDateInput = form.querySelector('input[name="startDate"]');
         const endDateInput = form.querySelector('input[name="endDate"]');
         const renterNameInput = form.querySelector('input[name="renterName"]');
         const renterEmailInput = form.querySelector('input[name="renterEmail"]');
         const addressInput = form.querySelector('input[name="address"]');
+        console.log(renterNameInput)
     
         // Check if the elements are found before accessing their values
         const name = nameInput ? nameInput.value : '';
-        const rent = rentInput ? rentInput.value : '';
         const startDateRaw = startDateInput ? startDateInput.value : '';
     const endDateRaw = endDateInput ? endDateInput.value : '';
         const renterName = renterNameInput ? renterNameInput.value : '';
         const renterEmail = renterEmailInput ? renterEmailInput.value : '';
         const address = addressInput ? addressInput.value : '';
         const truck_id = truckDetails._id;
+        const truck_img = truckDetails.img;
+        const status = "Pending"
 
+        console.log(renterName)
         
 console.log('Raw Start Date:', startDate);
 console.log('Raw End Date:', endDate);
@@ -81,6 +75,8 @@ if (!isValid(parsedStartDate) || !isValid(parsedEndDate)) {
 
     const hoursDifference = differenceInHours(parsedEndDate, parsedStartDate);
     const totalRent = rent * hoursDifference;
+    const calculatedTotalRent = rent * hoursDifference;
+    setTotalRent(calculatedTotalRent);
 
     // Log the parsed dates and calculated values for debugging
     console.log('Parsed Start Date:', isoFormattedStartDate);
@@ -88,43 +84,30 @@ if (!isValid(parsedStartDate) || !isValid(parsedEndDate)) {
     console.log('Hours Difference:', hoursDifference);
     console.log('Total Rent:', totalRent);
 
-    console.log(name, rent, isoFormattedStartDate, isoFormattedEndDate, renterEmail, renterName, address, hoursDifference, totalRent);
-        // if (truckQuantity === 0) {
-        //     toast.error('Food is not available')
-        // }
-        // else if (orderQuantity > truckQuantity) {
-        //     console.log('orderQuantity is large');
-        //     toast.error('Quantity is not available');
-        //     return;
-        // } else {
-        //     console.log('quantity is larger');
-        // const newRent = { name, img, renterName, renterEmail, rent, date, orderQuantity, truck_id };
-        // console.log(newRent);
+    console.log(name, totalRent, isoFormattedStartDate, isoFormattedEndDate, renterEmail, renterName, address, hoursDifference, totalRent, status);
+      
+        const newRent = { name, totalRent, isoFormattedStartDate, isoFormattedEndDate, renterEmail, renterName, address, hoursDifference,  status, truck_id, truck_img};
+        console.log(newRent);
 
-    //     fetch('http://localhost:5000/rent', {
-    //         method: 'POST',
-    //         headers: {
-    //             'content-type': 'application/json',
-    //         },
-    //         body: JSON.stringify(newRent),
-    //     })
-    //         .then((res) => res.json())
-    //         .then((data) => {
-    //             console.log(data)
-    //             if (data._id || data.insertedId) {
-    //                 toast.success('Rent Request is successfully placed');
-    //                 form.reset();
-    //             }
-    //         })
-    //         .catch((error) => {
-    //             console.error('Error:', error);
-    //             toast.error('Failed to rent ');
-    //         });
-    // }
-
-
-
-
+        fetch('http://localhost:5000/rent', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json',
+            },
+            body: JSON.stringify(newRent),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data)
+                if (data._id || data.insertedId) {
+                    toast.success('Rent Request is successfully placed');
+                    form.reset();
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                toast.error('Failed to rent ');
+            });
     }
 
     return (
@@ -138,7 +121,7 @@ if (!isValid(parsedStartDate) || !isValid(parsedEndDate)) {
                                 <span className="label-text text-black font-semibold">Renter Name</span>
                             </label>
                             <label className="input-group">
-                                <input readOnly defaultValue={user.displayName} type="text" name="buyerName" placeholder="buyer name" className="input input-bordered  w-full max-w-xs" />
+                                <input readOnly defaultValue={user.displayName} type="text" name="renterName" placeholder="renter name" className="input input-bordered  w-full max-w-xs" />
                             </label>
                         </div>
                         <div className="form-control md:w-1/2 ">
@@ -169,7 +152,7 @@ if (!isValid(parsedStartDate) || !isValid(parsedEndDate)) {
                                 <span className="label-text text-black font-semibold ">Truck name</span>
                             </label>
                             <label className="input-group">
-                                <input defaultValue={name} type="text" name="name" className="input input-bordered  w-full max-w-xs" />
+                                <input defaultValue={name} readOnly type="text" name="name" className="input input-bordered  w-full max-w-xs" />
                             </label>
                         </div>
                     </div>
@@ -244,7 +227,7 @@ if (!isValid(parsedStartDate) || !isValid(parsedEndDate)) {
                                 <span className="label-text text-black font-semibold">Total Rent</span>
                             </label>
                             <label className="input-group">
-                                <input  type="number" name="rent" placeholder="rent" className="input input-bordered  w-full max-w-xs" />
+                                <input value={totalRent} readOnly type="number" name="totalRent" placeholder="total rent" className="input input-bordered  w-full max-w-xs" />
                             </label>
                         </div>
 

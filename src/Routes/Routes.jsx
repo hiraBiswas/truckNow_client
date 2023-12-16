@@ -3,7 +3,6 @@ import {
   } from "react-router-dom";
 import Main from "../Layout/Main";
 import Home from "../Pages/Home/Home";
-import RequestedTruck from "../Pages/RequestedTruck/Requestedtruck";
 import PrivateRoute from './PrivateRoute'
 import Login from "../Pages/Login/Login";
 import Register from "../Pages/Register/Register";
@@ -14,13 +13,13 @@ import Dashboard from "../Layout/Dashboard";
 import UserHome from "../Pages/Dashboard/UserHome/UserHome";
 import AllMyTrip from "../Pages/Dashboard/AllMyTrip/AllMyTrip";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
-import RequestedTrip from "../Pages/Dashboard/RequestedTrip/RequestedTrip";
 import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
 import AdminRoute from "./AdminRoute";
 import AllBookedTrip from "../Pages/Dashboard/AllBookedTrip/AllBookedTrip";
 import AllUser from "../Pages/Dashboard/AllUser/AllUser";
 import BiddingPending from "../Pages/Dashboard/BiddingPending/BiddingPending";
 import TripRequest from "../Pages/Dashboard/TripRequest/TripRequest";
+import RequestedTruckList from "../Pages/Dashboard/RequestedTruckList/RequestedTruckList";
 
 export const router = createBrowserRouter([
     {
@@ -74,8 +73,8 @@ export const router = createBrowserRouter([
           element: <AllMyTrip></AllMyTrip>
         },
         {
-          path: 'requestedTrip',
-          element: <RequestedTrip></RequestedTrip>
+          path: 'requestedTruck',
+          element: <RequestedTruckList></RequestedTruckList>
         },
         
 
