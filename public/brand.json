@@ -2,49 +2,61 @@
   {
     "img": "https://i.ibb.co/m5zfgjy/professional-moving-services-malaysia-removebg-preview.pnghttps://i.ibb.co/XSGGxcB/a0322109aef56494ea38f5513f574cde.jpg",
     "category": "Small",
-    "brand": "Eicher ",
+    "brand": "Eicher",
     "name": "Eicher Pro 5025H",
-    "rent": 12000,
-    "quantity": 5
+    "rent": 560,
+    "quantity": 5,
+    "capacity": "2 Ton",
+    "fuel": "Diesel"
   },
   {
     "img": "https://i.ibb.co/DDWHrbL/9d63c95f953838507af7ac34669bd1e6.png",
     "category": "Small",
-    "brand": "Eicher ",
+    "brand": "Eicher",
     "name": "Eicher Pro 2055CT",
-    "rent": 11500,
-    "quantity": 3
+    "rent": 620,
+    "quantity": 3,
+    "capacity": "1 Ton",
+    "fuel": "Diesel"
   },
   {
     "img": "https://i.ibb.co/J5NbPGW/30794e92fe379f3a4166006af4844cd1.jpg",
     "category": "Large",
     "brand": "Eicher",
     "name": "Eicher 1050CT",
-    "rent": 16000,
-    "quantity": 8
+    "rent": 1250,
+    "quantity": 8,
+    "capacity": "15 Ton",
+    "fuel": "Petrol"
   },
   {
     "img": "https://i.ibb.co/LRRtQFM/012221765c8a9d1cc09378a7d7e2ad5d.jpg",
     "category": "Large",
     "brand": "Eicher",
     "name": "Eicher Pro 1075CT",
-    "rent": 15000,
-    "quantity": 6
+    "rent": 1220,
+    "quantity": 6,
+    "capacity": "15 Ton",
+    "fuel": "Petrol"
   },
   {
     "img": "https://i.ibb.co/w6vZNnq/e0e52994cf75863a4084d11f7a096d32.jpg",
     "category": "Medium",
     "brand": "Eicher",
     "name": "Eicher Pro 1112XPT",
-    "rent": 14000,
-    "quantity": 4
+    "rent": 750,
+    "quantity": 4,
+    "capacity": "7.5 Ton",
+    "fuel": "Diesel"
   },
   {
     "img": "https://i.ibb.co/NSPJMwN/1080.png",
     "category": "Medium",
     "brand": "Eicher",
     "name": "Eicher Motors",
-    "rent": 13500,
-    "quantity": 7
+    "rent":820,
+    "quantity": 7,
+    "capacity": "3.5 Ton",
+    "fuel": "Diesel"
   }
 ]

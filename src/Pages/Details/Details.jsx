@@ -25,7 +25,7 @@ const Details = () => {
                 <h3 className="text-lg">Category : {category}</h3>    
                 <h3 className="text-lg">Rent per day: {rent} Tk</h3>
               
-                <Link to={`/truck/${_id}`}><button className="btn bg-amber-500" >Request to Rent</button></Link>
+                <Link to={`/truck/rentForm/${_id}`}><button className="btn bg-amber-500 my-4" >Request to Rent</button></Link>
             </div>
            </div>
          

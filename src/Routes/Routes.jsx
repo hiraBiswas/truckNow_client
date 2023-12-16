@@ -47,8 +47,15 @@ export const router = createBrowserRouter([
           element: <Register></Register>
         },
         {
-            path: 'register',
-            element: <AllTruck></AllTruck>
+            path: '/details/:id',
+            element: <Details></Details>,
+            loader: ({ params }) => fetch(`http://localhost:5000/truck/${params.id}`)
+          },
+
+          {
+            path: 'truck/rentForm/:id',
+            element:<RentForm></RentForm>,
+            loader: ({ params }) => fetch(`http://localhost:5000/truck/${params.id}`)
           },
         
       ]
