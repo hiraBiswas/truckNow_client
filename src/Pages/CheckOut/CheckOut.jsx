@@ -28,7 +28,7 @@ const CheckOut = () => {
         }
         console.log(booking)
 
-        fetch('http://localhost:5900/bookings',{
+        fetch('https://car-doctor-server-v1-sigma.vercel.app/bookings',{
             method: 'POST',
             headers:{
                 'content-type': 'application/json'

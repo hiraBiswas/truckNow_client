@@ -1,51 +1,50 @@
 [
-    {
-      "id": 1,
-      "brand_name": "Focallure",
-      "thumbnail_img": "https://i.ibb.co/rb259s9/download-2.png",
-      "ad1_img": "https://i.ibb.co/G54k9M1/lipB4.jpghttps://i.ibb.co/02K0wj2/Focallure-Mobile-Banner.jpg",
-      "ad2_img": "https://i.ibb.co/k3r3Jt6/Focallure-Mobile-View.webp",
-      "ad3_img": "https://i.ibb.co/z4Bpyd5/Focallure-1.webp"
-    },
-    {
-      "id": 2,
-      "brand_name": "Simple",
-      "thumbnail_img": "https://i.ibb.co/0YNZLhp/07c83781c5c42dd6e4328fa1522843d1a232dfbf-1080x1080.webp",
-      "ad1_img": "https://i.ibb.co/Z1JSmQF/maxresdefault.jpg",
-      "ad2_img": "https://i.ibb.co/FwMkbGT/Good-Ingredients-Of-Simple-Skincare-1.jpg",
-      "ad3_img": "https://i.ibb.co/7Qf9v72/Simple-Skin-Care-1.jpg"
-    },
-    {
-      "id": 3,
-      "brand_name": "Pastel",
-      "thumbnail_img": "https://i.ibb.co/6HXdh9X/download-1.png",
-      "ad1_img": "brandC_ad1.jpg",
-      "ad2_img": "brandC_ad2.jpg",
-      "ad3_img": "brandC_ad3.jpg"
-    },
-    {
-      "id": 4,
-      "brand_name": "CeraVe",
-      "thumbnail_img": "https://i.ibb.co/WfT9wHL/images.jpg",
-      "ad1_img": "brandD_ad1.jpg",
-      "ad2_img": "brandD_ad2.jpg",
-      "ad3_img": "brandD_ad3.jpg"
-    },
-    {
-      "id": 5,
-      "brand_name": "Sakura",
-      "thumbnail_img": "https://i.ibb.co/HYLRzBN/download-3.png",
-      "ad1_img": "brandE_ad1.jpg",
-      "ad2_img": "brandE_ad2.jpg",
-      "ad3_img": "brandE_ad3.jpg"
-    },
-    {
-      "id": 6,
-      "brand_name": "Dove",
-      "thumbnail_img": "https://i.ibb.co/0Cn72bK/901a44540d2f1f9ed20242535a036cb4fbbfa254-1080x1080.webp",
-      "ad1_img": "brandF_ad1.jpg",
-      "ad2_img": "brandF_ad2.jpg",
-      "ad3_img": "brandF_ad3.jpg"
-    }
-  ]
-  
+  {
+    "img": "https://i.ibb.co/m5zfgjy/professional-moving-services-malaysia-removebg-preview.pnghttps://i.ibb.co/XSGGxcB/a0322109aef56494ea38f5513f574cde.jpg",
+    "category": "Small",
+    "brand": "Eicher ",
+    "name": "Eicher Pro 5025H",
+    "rent": 12000,
+    "quantity": 5
+  },
+  {
+    "img": "https://i.ibb.co/DDWHrbL/9d63c95f953838507af7ac34669bd1e6.png",
+    "category": "Small",
+    "brand": "Eicher ",
+    "name": "Eicher Pro 2055CT",
+    "rent": 11500,
+    "quantity": 3
+  },
+  {
+    "img": "https://i.ibb.co/J5NbPGW/30794e92fe379f3a4166006af4844cd1.jpg",
+    "category": "Large",
+    "brand": "Eicher",
+    "name": "Eicher 1050CT",
+    "rent": 16000,
+    "quantity": 8
+  },
+  {
+    "img": "https://i.ibb.co/LRRtQFM/012221765c8a9d1cc09378a7d7e2ad5d.jpg",
+    "category": "Large",
+    "brand": "Eicher",
+    "name": "Eicher Pro 1075CT",
+    "rent": 15000,
+    "quantity": 6
+  },
+  {
+    "img": "https://i.ibb.co/w6vZNnq/e0e52994cf75863a4084d11f7a096d32.jpg",
+    "category": "Medium",
+    "brand": "Eicher",
+    "name": "Eicher Pro 1112XPT",
+    "rent": 14000,
+    "quantity": 4
+  },
+  {
+    "img": "https://i.ibb.co/NSPJMwN/1080.png",
+    "category": "Medium",
+    "brand": "Eicher",
+    "name": "Eicher Motors",
+    "rent": 13500,
+    "quantity": 7
+  }
+]

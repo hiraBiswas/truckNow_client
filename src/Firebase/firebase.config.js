@@ -5,12 +5,12 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey:import.meta.env.VITE_apiKey,
-  authDomain:import.meta.env.VITE_authDomain,
-  projectId:import.meta.env.VITE_projectId,
-  storageBucket:import.meta.env.VITE_storageBucket,
-  messagingSenderId:import.meta.env.VITE_messagingSenderId,
-  appId:import.meta.env.VITE_appId
+  apiKey: "AIzaSyAhUmI0FIbRvjFwGEmNoEv99_qzj_iLhwI",
+  authDomain: "trucknow-c33ae.firebaseapp.com",
+  projectId: "trucknow-c33ae",
+  storageBucket: "trucknow-c33ae.appspot.com",
+  messagingSenderId: "815802948781",
+  appId: "1:815802948781:web:13b6926c06a0e9306e3a24"
 };
 
 // Initialize Firebase

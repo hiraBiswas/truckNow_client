@@ -1,77 +1,76 @@
+import { useContext } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
+import { BsGoogle } from 'react-icons/bs';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import SocialLogin from "./SocialLogin.jsx";
 
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import img from '../../assets/images/login/login.svg'
-import { useContext } from 'react';
-import { AuthContext } from '../../Providers/AuthProvider';
-import axios from 'axios';
+
 const Login = () => {
 
-  const {signIn} = useContext(AuthContext)
-  const location = useLocation()
-  const navigate = useNavigate()
-  console.log(location);
+   
+    const location = useLocation()
+    console.log('location in login page', location)
+    const navigate = useNavigate()
+    const { signIn, loading } = useContext(AuthContext)
 
- const handleLogin = e =>{
-  e.preventDefault();
-    const form =e.target;
-    const email = form.email.value;
-    const password = form.password.value;
-    console.log(email, password)
 
-    signIn(email, password)
-    .then(result=>{
-      const loggedInUser= result.user;
-      console.log(loggedInUser)
-      const user ={email}
-      console.log('Login Complete')
-      // navigate(location?.state?location?.state:'/')
-     axios.post('http://localhost:5900/jwt', user, {withCredentials:true})
-     .then(res=>{
-      console.log(res.data)
-      if(res.data.success){
-        navigate(location?.state?location?.state:'/')
-
+    const handleLogin = async (e) => {
+      e.preventDefault();
+      const form = new FormData(e.target);
+      const email = form.get('email');
+      const password = form.get('password');
+  
+      try {
+          await signIn(email, password);
+          navigate(location?.state ? location.state : '/');
+      } catch (error) {
+          console.error("Login Error:", error.message);
+          toast.error(error.message);
       }
-     })
-    })
-    .catch(error=>{
-      console.error(error)
-    })
-    
- }
-
+  };
     return (
-        <div className="hero min-h-screen ">
-        <div className="hero-content flex-col lg:flex-row ">
-          <div className="text-center w-1/2 lg:text-left">
-           <img src={img} alt="" />
-          </div>
-          <div className="card flex-shrink-0 w-1/2 shadow-2xl bg-base-100">
-           <div className='p-16'>
-           <h1 className='text-3xl font-bold text-center pb-12'>Login</h1>
-            <form onSubmit={handleLogin} className="card-body">
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Email</span>
-                </label>
-                <input type="email" placeholder="email" name="email" className="input input-bordered" required />
-              </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Password</span>
-                </label>
-                <input type="password" placeholder="password" name="password" className="input input-bordered" required />
-              
-              </div>
-              <div className="form-control mt-6">
-                <button className="btn bg-orange-500">Sign In</button>
-              </div>
-            </form>
-            <p>New to Car doctor? <Link to="/signUp" className='text-xl text-orange-500'>Sign Up</Link> here.</p>
-           </div>
-          </div>
+
+        <div className="  shadow-drop">
+            <div className="container   mx-auto"  >
+                <h2 className="text-2xl font-bold text-black py-12 text-center   lg:text-4xl pt-2">Login Here !</h2>
+                <div className="flex ">
+                    <form onSubmit={handleLogin} className="py-5 flex-1" >
+                        <div className="form-control drop-shadow px-12">
+                            <label className="label">
+                                <span className="label-text text-black ">Email</span>
+                            </label>
+                            <input type="text" name='email' placeholder="email" className="input rounded-none border-none border-transparent  bg-violet-200 drop-shadow text-black focus:outline-indigo-950 focus:bg-white" />
+                        </div>
+
+                      
+
+                        <div className="form-control drop-shadow  px-12 ">
+                            <label className="label">
+                                <span className="label-text  text-black">Password</span>
+                            </label>
+                            <input type="password" name='password' placeholder="password" className="input rounded-none border-none border-transparent  bg-violet-200 drop-shadow text-black focus:outline-indigo-950 focus:bg-white" />
+
+                            <p className="text-black py-3">New to the website? <span className="text-indigo-950"><Link to="/register">Sign Up</Link></span> here.</p>
+                        </div>
+                        
+                        
+                        <div className="form-control mt-2">
+                            <input className="btn bg-indigo-950 mx-12 text-white drop-shadow hover:bg-white hover:text-cyan-600" type="submit" value="Login" />
+                        </div>
+                        
+                    </form>
+
+                    <div className="flex-1 h-full">
+                        <img className="h-[430px]" src="https://i.postimg.cc/jSHMzwjw/1000-F-282091909-OKTHM5-TJG5-Fa-KYRklh8-IFL9073x-NSt-Bg-1-c0-ESK6-Vd-C-transformed.jpg" alt="" />
+                    </div>
+                </div>
+            </div>
+
         </div>
-      </div>
+
+
     );
 };
 
