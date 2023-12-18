@@ -15,11 +15,11 @@ import AllMyTrip from "../Pages/Dashboard/AllMyTrip/AllMyTrip";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
 import AdminRoute from "./AdminRoute";
-import AllBookedTrip from "../Pages/Dashboard/AllBookedTrip/AllBookedTrip";
+import AllBooking from "../Pages/Dashboard/AllBooking/AllBooking";
 import AllUser from "../Pages/Dashboard/AllUser/AllUser";
 import BiddingPending from "../Pages/Dashboard/BiddingPending/BiddingPending";
-import TripRequest from "../Pages/Dashboard/TripRequest/TripRequest";
 import RequestedTruckList from "../Pages/Dashboard/RequestedTruckList/RequestedTruckList";
+import AllRequest from "../Pages/Dashboard/AllRequest/AllRequest";
 
 export const router = createBrowserRouter([
     {
@@ -84,13 +84,13 @@ export const router = createBrowserRouter([
           element:<AdminHome></AdminHome>
         },
         {
-          path: 'allBookedTrip',
-          element: <AllBookedTrip></AllBookedTrip>
+          path: 'allBooking',
+          element: <AllBooking></AllBooking>
         
         },
         {
-            path: 'tripRequest',
-            element: <TripRequest></TripRequest>
+            path: 'allRequest',
+            element: <AllRequest></AllRequest>
            
           },
         {

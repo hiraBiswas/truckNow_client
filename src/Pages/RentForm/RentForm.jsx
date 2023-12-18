@@ -33,15 +33,18 @@ const RentForm = () => {
         event.preventDefault();
         const form = event.target;
         const nameInput = form.querySelector('input[name="name"]');
+        const phoneInput = form.querySelector('input[name="phone"]');
         const startDateInput = form.querySelector('input[name="startDate"]');
         const endDateInput = form.querySelector('input[name="endDate"]');
         const renterNameInput = form.querySelector('input[name="renterName"]');
         const renterEmailInput = form.querySelector('input[name="renterEmail"]');
         const addressInput = form.querySelector('input[name="address"]');
-        console.log(renterNameInput)
+    
+        console.log(phoneInput)
     
         // Check if the elements are found before accessing their values
         const name = nameInput ? nameInput.value : '';
+        const phone = phoneInput ? phoneInput.value : '';
         const startDateRaw = startDateInput ? startDateInput.value : '';
     const endDateRaw = endDateInput ? endDateInput.value : '';
         const renterName = renterNameInput ? renterNameInput.value : '';
@@ -51,7 +54,7 @@ const RentForm = () => {
         const truck_img = truckDetails.img;
         const status = "Pending"
 
-        console.log(renterName)
+        console.log(phone)
         
 console.log('Raw Start Date:', startDate);
 console.log('Raw End Date:', endDate);
@@ -84,9 +87,9 @@ if (!isValid(parsedStartDate) || !isValid(parsedEndDate)) {
     console.log('Hours Difference:', hoursDifference);
     console.log('Total Rent:', totalRent);
 
-    console.log(name, totalRent, isoFormattedStartDate, isoFormattedEndDate, renterEmail, renterName, address, hoursDifference, totalRent, status);
+    console.log(name, totalRent,phone, startDate, endDate, renterEmail, renterName, address, hoursDifference, totalRent, status);
       
-        const newRent = { name, totalRent, isoFormattedStartDate, isoFormattedEndDate, renterEmail, renterName, address, hoursDifference,  status, truck_id, truck_img};
+        const newRent = { name,phone, totalRent, startDate, endDate, renterEmail, renterName, address, hoursDifference,  status, truck_id, truck_img};
         console.log(newRent);
 
         fetch('http://localhost:5000/rent', {

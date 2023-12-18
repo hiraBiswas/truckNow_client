@@ -1,4 +1,9 @@
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
+AOS.init({
+    duration: 1500,
+  });
 const Banner = () => {
   return (
     <div>
@@ -7,10 +12,10 @@ const Banner = () => {
   <div className="hero h-[500px]" style={{backgroundImage: 'url(https://i.ibb.co/z8L7rsr/container-truck-ship-port-ai-generated-image.jpg)'}}>
   <div className="hero-overlay bg-black bg-opacity-60"></div>
   <div className="hero-content text-center text-neutral-content">
-    <div className="max-w-md lg:max-w-2xl">
-      <h1 className="mb-2 text-2xl font-bold text-white lg:text-4xl lg:mb-2">Embark on Your Journey with <span className="text-amber-500 text-5xl italic">TruckNow</span></h1>
-      <p className="mb-2 text-sm font-bold lg:text-lg lg:mb-5">- Renting Simplified, Moving Amplified.</p>
-      <button className="btn bg-amber-700 py-3 px-6 text-white">Get Started</button>
+    <div className="max-w-md lg:max-w-3xl">
+      <h1 data-aos="zoom-in" className="mb-2 text-2xl font-bold text-white lg:text-4xl lg:mb-2">Embark on Your Journey with <br /><span className="text-amber-500 text-5xl py-2">TruckNow</span> <br /></h1>
+      <p data-aos="zoom-in" data-aos-duration="1500" className="mb-2 text-sm font-bold lg:text-lg lg:mb-5">- Renting Simplified, Moving Amplified.</p>
+      <button  className="btn bg-amber-500 py-3 px-6 text-white border-none">Get Started</button>
     </div>
   </div>
 </div>
@@ -27,7 +32,7 @@ const Banner = () => {
       <h1 className="mb-2 text-2xl font-bold text-white lg:text-4xl lg:mb-2">Your Journey, Our Trucks</h1>
       <p className="mb-5 text-sm font-bold lg:text-lg">- Seamless Rentals Every Time</p>
       <p className="mb-2">Experience a smooth ride with our dedicated truck rentals. Your journey is made effortless as our trucks deliver reliable and seamless rentals, ensuring your satisfaction every time.</p>
-      <button className="btn bg-amber-600 text-white py-3 px-6">Get Started</button>
+      <button className="btn bg-amber-500 text-white py-3 px-6">Get Started</button>
     </div>
   </div>
 </div>

@@ -57,13 +57,11 @@ const Dashboard = () => {
                   <NavLink to="/dashboard/allUser">All User</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/dashboard/allBookedTrip">All Booked Trip</NavLink>
+                  <NavLink to="/dashboard/allBooking">All Booking</NavLink>
                 </li>
+              
                 <li>
-                  <NavLink to="/dashboard/biddingPending">Pending Biding</NavLink>
-                </li>
-                <li>
-                  <NavLink to="/dashboard/tripRequest">All Request</NavLink>
+                  <NavLink to="/dashboard/allRequest">All Request</NavLink>
                 </li>
               </>
             ) : (

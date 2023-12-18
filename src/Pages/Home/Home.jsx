@@ -5,6 +5,8 @@ import FeaturedTruck from "../FeaturedTruck/FeaturedTruck";
 import Services from "../Services/Services";
 import TruckCard from "../TruckCard/TruckCard";
 import { useEffect, useState } from "react";
+import FaqSection from "./FaqSection";
+
 
 
 const Home = () => {
@@ -31,7 +33,9 @@ const Home = () => {
            </div>
            </div>
 
+
           <Services></Services>
+       <FaqSection></FaqSection>
        
           
         </div>
