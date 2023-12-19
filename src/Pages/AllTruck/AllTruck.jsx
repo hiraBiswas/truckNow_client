@@ -43,12 +43,12 @@ const AllTruck = () => {
   };
 
   return (
-    <div>
+    <div className="container mx-auto">
       <form className="p-5" onSubmit={handleSearch}>
         <input className="p-2 border-2 rounded-xl text-black" type="text" name="search" />
         <input type="submit" value="Search" className="btn bg-amber-500 text-black" />
       </form>
-      <div className="shadow-2xl py-10 px-5 drop-shadow rounded-xl grid gap-12 grid-cols-1 lg:grid-cols-3">
+      <div className="shadow-2xl py-10 px-10 shadow-drop rounded-xl my-5 ">
         {currentTruckPage.map((truck) => (
           <TruckCard key={truck._id} truck={truck}></TruckCard>
         ))}

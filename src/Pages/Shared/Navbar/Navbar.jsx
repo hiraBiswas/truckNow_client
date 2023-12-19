@@ -5,11 +5,18 @@ import { useContext } from 'react';
 import { AuthContext } from '../../../Providers/AuthProvider';
 
 const Navbar = () => {
+
+  const {user, logOut}= useContext(AuthContext)
     const links =<>
     <li className="text-lg lg:text-xl font-semibold mr-5"><NavLink to="/">Home</NavLink></li>
     <li className="text-lg lg:text-xl font-semibold mr-5"><NavLink to="/allTruck">All Truck</NavLink></li>
     <li className="text-lg lg:text-xl font-semibold mr-5"><NavLink to="/blog">Blog</NavLink></li>
     <li className="text-lg lg:text-xl font-semibold mr-5"><NavLink to="/contact">Contact</NavLink></li>
+    {user && (
+        <li className="text-lg lg:text-xl font-semibold mr-5">
+          <NavLink to="/dashboard">Dashboard</NavLink>
+        </li>
+      )}
     </>
 
 const profileLinks =<>
@@ -20,7 +27,7 @@ const profileLinks =<>
 </>
 
 
-const {user, logOut}= useContext(AuthContext)
+
 const handleSignOut=()=>{
      logOut()
      .then(result=>{
