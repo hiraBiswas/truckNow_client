@@ -5,6 +5,8 @@ import { FaTrashAlt, FaUsers } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { parse ,format} from 'date-fns';
 import axios from 'axios'; 
+import { v4 as uuidv4 } from 'uuid';
+import { ToastContainer, toast } from "react-toastify";
 
 const AllRequest = () => {
     const axiosSecure = useAxiosSecure();
@@ -20,56 +22,41 @@ const AllRequest = () => {
       }
     });
 
-    const handleApproveRequest = (request) => {
+    const handleApproveRequest = async (request) => {
         // Update status to "Approved" and move to bookedCollection
         const updatedRequest = {
-          ...request,
-          status: 'Approved',
+            ...request,
+            status: 'Approved',
+     
         };
-      
-        axiosSecure.patch(`/rent/approve/${request._id}`, updatedRequest).then((res) => {
-          console.log(res.data);
-          if (res.data.modifiedCount > 0) {
-            // Move the record to bookedCollection
-            axios.post('/booked', updatedRequest).then((response) => {
-              console.log(response.data);
-              console.log(updatedRequest)
-              refetch();
-              Swal.fire({
-                position: "top-end",
-                icon: "success",
-                title: `Request is Approved and moved to bookedCollection!`,
-                showConfirmButton: false,
-                timer: 1500,
-              });
-            });
-          }
-        });
-      };
-    const handleDeleteUser = (user) => {
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!",
-        }).then((result) => {
-            if (result.isConfirmed) {
-                axiosSecure.delete(`/users/${user._id}`).then((res) => {
-                    if (res.data.deletedCount > 0) {
-                        refetch();
-                        Swal.fire({
-                            title: "Deleted!",
-                            text: "Your file has been deleted.",
-                            icon: "success",
-                        });
-                    }
-                });
-            }
-        });
+    
+        try {
+            // Update the status to "Approved" in the rent collection
+            await axiosSecure.patch(`/rent/approve/${request._id}`, updatedRequest);
+            
+            // Show success popup
+            refetch();
+           toast.success('Request is approved')
+        } catch (error) {
+            console.error(error);
+            // Handle errors if necessary
+        }
     };
+          
+    const handleRejectRequest = async (request) => {
+        try {
+          
+            await axiosSecure.patch(`/rent/reject/${request._id}`, { status: 'Rejected' });
+
+      
+            refetch();
+           toast.success('Request is rejected')
+        } catch (error) {
+            console.error(error);
+           
+        }
+    };
+
 
     return (
         <div>
@@ -120,10 +107,10 @@ const AllRequest = () => {
                                 </td>
                                 <td>
                                     <button
-                                        onClick={() => handleDeleteUser(request)}
-                                        className="btn btn-ghost "
+                                        onClick={() => handleRejectRequest(request)}
+                                        className="btn bg-red-500 text-white"
                                     >
-                                        <FaTrashAlt className="text-red-600"></FaTrashAlt>
+                                        Reject
                                     </button>
                                 </td>
                             </tr>
@@ -131,6 +118,7 @@ const AllRequest = () => {
                     </tbody>
                 </table>
             </div>
+            <ToastContainer></ToastContainer>
         </div>
     );
 };

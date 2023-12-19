@@ -106,23 +106,23 @@ const Register = () => {
   };
   return (
     <div className=" py-5 shadow-drop">
-      <div className="flex  container mx-auto">
-        <div className="flex-1 py-5 " >
+      <div className="container mx-auto">
+        <div className="max-w-3xl mx-auto flex-1 py-5 " >
           <h2 className="text-2xl font-bold text-center   lg:text-4xl pt-3 ">Register Here !</h2>
-          <div className="flex gap-10">
+          <div className="">
             <div>
-              <form  onSubmit={handleSubmit(onSubmit)} className="py-2 " >
+              <form  onSubmit={handleSubmit(onSubmit)} className="py-8 " >
                 <div className="form-control px-12 ">
                   <label className="label">
                     <span className="label-text text-black focus:text-black">Name</span>
                   </label>
-                  <input {...register('name', { required: true })} type="text" name='name' placeholder="name" className="input rounded-none border-none border-transparent  bg-violet-200 drop-shadow text-black focus:outline-indigo-950 focus:bg-white" />
+                  <input {...register('name', { required: true })} type="text" name='name' placeholder="name" className="input input-bordered" />
                 </div>
                 <div className="form-control px-12 ">
                   <label className="label">
                     <span className="label-text text-black">Email</span>
                   </label>
-                  <input {...register('email', { required: true })} type="text" name='email' placeholder="email" className="input rounded-none border-none border-transparent  bg-violet-200 drop-shadow text-black focus:outline-indigo-950 focus:bg-white" />
+                  <input {...register('email', { required: true })} type="text" name='email' placeholder="email" className="input input-bordered" />
                 </div>
                 {/* <div className="form-control px-12 ">
                   <label className="label">
@@ -139,27 +139,27 @@ const Register = () => {
                   <label className="label">
                     <span className="label-text text-black">Image</span>
                   </label>
-                  <input {...register('image', { required: true })} type="file" name='image' placeholder="image" className="input rounded-none border-none border-transparent  bg-violet-200 drop-shadow text-black focus:outline-indigo-950 focus:bg-white"/>
+                  <input {...register('image', { required: true })} type="file" name='image' placeholder="image" className="input input-bordered"/>
 
                 </div>
                 <div className="form-control px-12 ">
                   <label className="label">
                     <span className="label-text  text-black">Password</span>
                   </label>
-                  <input {...register('password', { required: true })} type="password" name='password' placeholder="password" className="input rounded-none border-none border-transparent  bg-violet-200 drop-shadow text-black focus:outline-indigo-950 focus:bg-white" />
+                  <input {...register('password', { required: true })} type="password" name='password' placeholder="password" className="input input-bordered" />
 
-                  <p className="text-black py-2">Already have account? <span className="text-indigo-900"><Link to="/login">Login</Link></span> here.</p>
+                  <p className="text-black py-2">Already have account? <span className="text-amber-500 font-bold"><Link to="/login">Login</Link></span> here.</p>
                 </div>
                 <div className="form-control mt-4">
-                  <input className="btn bg-indigo-950 mx-12 text-white hover:bg-white hover:text-indigo-900" type="submit" value="Sign Up" />
+                  <input className="btn bg-amber-500 mx-12 text-black" type="submit" value="Sign Up" />
                 </div>
               </form>
             </div>
 
 
-            <div>
+            {/* <div>
               <img src="https://i.postimg.cc/jSHMzwjw/1000-F-282091909-OKTHM5-TJG5-Fa-KYRklh8-IFL9073x-NSt-Bg-1-c0-ESK6-Vd-C-transformed.jpg" alt="" />
-            </div>
+            </div> */}
           </div>
         </div>
         <ToastContainer />

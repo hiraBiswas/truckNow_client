@@ -33,7 +33,8 @@
     "react-toastify": "^9.1.3",
     "slick-carousel": "^1.8.1",
     "sort-by": "^0.0.2",
-    "sweetalert2": "^11.6.13"
+    "sweetalert2": "^11.6.13",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",

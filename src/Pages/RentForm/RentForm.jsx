@@ -14,7 +14,7 @@ import { differenceInHours,parse, format , isValid} from 'date-fns';
 const RentForm = () => {
     const { user,  loading } = useContext(AuthContext);
     const truckDetails = useLoaderData();
-    const { name, rent } = truckDetails;
+    const { name, rent, _id } = truckDetails;
     console.log(truckDetails, user)
    
 
