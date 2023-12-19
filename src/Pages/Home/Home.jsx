@@ -6,6 +6,7 @@ import Services from "../Services/Services";
 import TruckCard from "../TruckCard/TruckCard";
 import { useEffect, useState } from "react";
 import FaqSection from "./FaqSection";
+import Review from "./Review";
 
 
 
@@ -36,7 +37,7 @@ const Home = () => {
 
           <Services></Services>
        <FaqSection></FaqSection>
-       
+       <Review></Review>
           
         </div>
     );
