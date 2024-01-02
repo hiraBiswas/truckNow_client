@@ -39,22 +39,25 @@ const Dashboard = () => {
             aria-label="close sidebar"
             className="drawer-overlay"
           ></label>
-          <ul className="menu p-4 w-80 min-h-full bg-base-200 text-base-content">
+          <ul className="menu p-4 w-80 min-h-full bg-amber-100 text-base-content">
             {/* Sidebar content here */}
             <Link to="/">
-              <img
-                className="h-24 w-24"
-                src="https://i.ibb.co/RBv1kDP/Hanover-removebg-preview.png"
-                alt=""
-              />
+              <img className="h-12 w-20" src="https://i.ibb.co/LSJFDGt/Hanover-removebg-preview-2.png" alt="" />
+              <h3 className="text-2xl font-bold text-black pb-5">TruckNow</h3>
             </Link>
             {isAdmin ? (
               <>
-                <li>
+                <li className="font-bold">
                   <NavLink to="/dashboard/adminHome">Admin Home</NavLink>
                 </li>
                 <li>
                   <NavLink to="/dashboard/allUser">All User</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/addTruck">Add Truck</NavLink>
+                </li>
+                <li>
+                  <NavLink to="/dashboard/manageTruck">Manage Truck</NavLink>
                 </li>
                 <li>
                   <NavLink to="/dashboard/allBooking">All Booking</NavLink>
@@ -63,16 +66,18 @@ const Dashboard = () => {
                 <li>
                   <NavLink to="/dashboard/allRequest">All Request</NavLink>
                 </li>
+
+              
               </>
             ) : (
               <>
-                <li>
+                <li className="font-bold">
                   <NavLink to="/dashboard/userHome">User Home</NavLink>
                 </li>
-                <li>
+                <li className="font-bold">
                   <NavLink to="/dashboard/allMyTrip">All My Trip</NavLink>
                 </li>
-                <li>
+                <li className="font-bold">
                   <NavLink to="/dashboard/requestedTruck">Requested Truck List</NavLink>
                 </li>
               </>
@@ -80,8 +85,10 @@ const Dashboard = () => {
 
             <hr />
 
+            <Link to="/"><h3 className="font-bold ml-4 mt-5">Home</h3></Link>
+
             <Link>
-              <button onClick={handleSignOut} className="text-black mt-5 ml-4">
+              <button onClick={handleSignOut} className="text-black pt-2 ml-4 font-bold">
                 Logout
               </button>
             </Link>

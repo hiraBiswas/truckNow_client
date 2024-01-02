@@ -16,9 +16,9 @@ const Services = () => {
            
 
     return (
-      <div>
-        <h1 className='text-2xl  mt-10 text-center font-semibold lg:text-3xl lg:mt-20 text-black'>Why Choose<span className='text-amber-600 italic font-bold'> TruckNow</span> </h1>
-        <div data-aos="fade-up" className="mt-5 container bg-amber-500  rounded-lg flex flex-col lg:mx-w-full lg:mx-auto   gap-6 lg:flex-row lg:justify-center items-center">
+      <div data-aos="fade-down">
+        <h1 className='text-2xl  mt-10 text-center font-bold lg:text-3xl lg:mt-20 text-black pb-8 '>Why Choose TruckNow </h1>
+        <div  className="mt-5 container bg-amber-500  rounded-lg flex flex-col lg:mx-w-full lg:mx-auto   gap-6 lg:flex-row lg:justify-center items-center">
        
             <div className="p-5 bg-white text-center  w-2/5">
             <img className=''  src="https://i.ibb.co/fqLpGdw/professional-moving-services-malaysia.jpg" alt="" />
@@ -35,7 +35,7 @@ const Services = () => {
                     <p className='text-center text-amber-700'>More than 20 team</p>  
                 </div> */}
 
-                <div className='border-2 py-8 bg-white  border-amber-400 lg:border-x-0 '>
+                <div className='border-2 py-8 bg-white  border-amber-400 lg:border-x-0 hover:bg-amber-100'>
                   <div className=' flex justify-center'>
                   <TbTruckDelivery className='text-7xl '></TbTruckDelivery>
                   </div>
@@ -44,7 +44,7 @@ const Services = () => {
                 </div>
 
 
-                <div className='border-2 py-8 bg-white  border-amber-400'>
+                <div className='border-2 py-8 bg-white  border-amber-400 hover:bg-amber-100'>
                   <div className=' flex justify-center'>
                   <GrUserWorker className='text-7xl text-amber-600'></GrUserWorker>
                   </div>
@@ -53,7 +53,7 @@ const Services = () => {
                 </div>
 
 
-                <div className='border-2 py-8 bg-white  border-amber-400 lg:border-t-0'>
+                <div className='border-2 py-8 bg-white  border-amber-400 lg:border-t-0 hover:bg-amber-100'>
                   <div className=' flex justify-center'>
                   <FaWhatsapp className='text-7xl '></FaWhatsapp>
                   </div>
@@ -62,7 +62,7 @@ const Services = () => {
                      </div>
 
 
-                     <div className='border-2 bg-white  py-8  border-amber-400 lg:border-t-0 lg:border-x-0'>
+                     <div className='border-2 bg-white  py-8  border-amber-400 lg:border-t-0 lg:border-x-0 hover:bg-amber-100'>
                   <div className=' flex justify-center'>
                   <MdLocalOffer className='text-7xl '></MdLocalOffer>
                   </div>

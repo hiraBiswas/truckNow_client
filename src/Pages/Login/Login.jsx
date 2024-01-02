@@ -32,9 +32,9 @@ const Login = () => {
   };
     return (
 
-        <div className=" container   mx-auto shadow-drop">
-            <div className="max-w-3xl mx-auto"  >
-                <h2 className="text-2xl font-bold text-black py-12 text-center lg:pt-12   lg:text-4xl ">Login Here !</h2>
+        <div className=" max-w-md m-2 lg:mx-auto shadow-drop mb-10">
+            <div className="max-w-sm lg:max-w-3xl mx-auto"  >
+                <h2 className="text-2xl font-bold text-black py-5 text-center lg:pt-12   lg:text-4xl ">Login Here !</h2>
                 <div className="flex ">
                     <form onSubmit={handleLogin} className="py-5 flex-1" >
                     <div className="form-control">

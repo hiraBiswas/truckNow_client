@@ -20,6 +20,12 @@ import AllUser from "../Pages/Dashboard/AllUser/AllUser";
 import BiddingPending from "../Pages/Dashboard/BiddingPending/BiddingPending";
 import RequestedTruckList from "../Pages/Dashboard/RequestedTruckList/RequestedTruckList";
 import AllRequest from "../Pages/Dashboard/AllRequest/AllRequest";
+import AddNewTruck from "../Pages/Dashboard/AddNewTruck/AddNewTruck";
+import ManageTruck from "../Pages/Dashboard/ManageTruck/ManageTruck";
+import UpdateTruck from "../Pages/Dashboard/UpdateTruck/UpdateTruck";
+import Contact from "../Pages/Contact/Contact";
+
+
 
 export const router = createBrowserRouter([
     {
@@ -45,9 +51,14 @@ export const router = createBrowserRouter([
           path: 'register',
           element: <Register></Register>
         },
+
+        {
+          path: 'contact',
+          element: <Contact></Contact>
+        },
         {
             path: '/details/:id',
-            element: <Details></Details>,
+            element: <PrivateRoute><Details></Details></PrivateRoute>,
             loader: ({ params }) => fetch(`http://localhost:5000/truck/${params.id}`)
           },
 
@@ -99,9 +110,20 @@ export const router = createBrowserRouter([
         },
 
         {
-            path: 'biddingPending',
-            element: <BiddingPending></BiddingPending>
-          },
+          path: 'addTruck',
+         element:<AddNewTruck></AddNewTruck>
+        },
+
+        {
+          path:'manageTruck',
+          element:<ManageTruck></ManageTruck>
+        }
+        ,
+        {
+          path: 'updateTruck/:id',
+          element:<UpdateTruck></UpdateTruck>,
+          loader: ({params}) => fetch(`http://localhost:5000/truck/${params.id}`)
+        },
        
       ]
     }

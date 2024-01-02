@@ -7,6 +7,7 @@ import TruckCard from "../TruckCard/TruckCard";
 import { useEffect, useState } from "react";
 import FaqSection from "./FaqSection";
 import Review from "./Review";
+import Section from "./Section";
 
 
 
@@ -24,12 +25,14 @@ const Home = () => {
   
     return (
         <div>
+
+          <iframe src="https://widget.crictimes.org" className="h-[400px]"></iframe>
            <Banner></Banner> 
        
 
-
+           <Section></Section>
           <Services></Services>
-       <FaqSection></FaqSection>
+     
        <Review></Review>
           
         </div>

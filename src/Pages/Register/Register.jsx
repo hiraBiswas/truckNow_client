@@ -105,13 +105,13 @@ const Register = () => {
     }
   };
   return (
-    <div className=" py-5 shadow-drop">
-      <div className="container mx-auto">
-        <div className="max-w-3xl mx-auto flex-1 py-5 " >
+    <div className=" py-2 lg:py-5 shadow-drop">
+      <div className="max-w-md mx-auto">
+        <div className="max-w-3xl py-2 mx-auto flex-1 lg:py-5 " >
           <h2 className="text-2xl font-bold text-center   lg:text-4xl pt-3 ">Register Here !</h2>
           <div className="">
             <div>
-              <form  onSubmit={handleSubmit(onSubmit)} className="py-8 " >
+              <form  onSubmit={handleSubmit(onSubmit)} className="py-2 lg:py-8 " >
                 <div className="form-control px-12 ">
                   <label className="label">
                     <span className="label-text text-black focus:text-black">Name</span>

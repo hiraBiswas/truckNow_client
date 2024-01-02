@@ -26,8 +26,8 @@ const AllBookedTrip = () => {
     return (
         <div>
             <div className="flex justify-evenly my-4">
-                <h2 className="text-3xl">All Requests</h2>
-                <h2 className="text-3xl">Total Requests: {requests.length}</h2>
+                <h2 className="text-3xl">All Booked</h2>
+                <h2 className="text-3xl">Total Booked: {requests.length}</h2>
             </div>
             <div className="overflow-x-auto">
                 <table className="table table-zebra w-full">

@@ -16,7 +16,7 @@ const RequestedTruckList = () => {
         fetch('http://localhost:5000/rent')
             .then(response => response.json())
             .then(data => {
-                const userRentData = data.filter(item => item.renterEmail === user.email);
+                const userRentData = data.filter(item => item.renterEmail === user.email && item.status == 'Pending');
                 setRentData(userRentData);
             })
             .catch(error => {

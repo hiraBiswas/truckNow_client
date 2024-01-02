@@ -115,7 +115,7 @@ if (!isValid(parsedStartDate) || !isValid(parsedEndDate)) {
 
     return (
         <div>
-            <div className=" p-12">
+            <div className=" lg:p-12">
                 <h2 className="text-3xl font-extrabold text-center py-5 text-black">Rent Form</h2>
                 <form onSubmit={handleRent} className="px-10 max-w-3xl mx-auto shadow-2xl rounded-3xl">
                     <div className="md:flex gap-8 px-5">

@@ -9,10 +9,11 @@ const AllUser = () => {
         queryKey: ['users'],
         queryFn: async () => {
             const res = await axiosSecure.get('/users');
-            return res.data;
+            // Filter users by type === 'user'
+            const filteredUsers = res.data.filter(user => user.type === 'user');
+            return filteredUsers;
         }
     });
-
     const handleMakeAdmin = (user) => {
         axiosSecure.patch(`/users/admin/${user._id}`).then((res) => {
             console.log(res.data);
