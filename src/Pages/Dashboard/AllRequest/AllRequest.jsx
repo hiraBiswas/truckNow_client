@@ -15,7 +15,7 @@ const AllRequest = () => {
       queryFn: async () => {
         const res = await axiosSecure.get('/rent', {
           params: {
-            status: 'Pending', 
+            status: 'pending', 
           },
         });
         return res.data;
@@ -71,12 +71,10 @@ const AllRequest = () => {
                         <tr>
                             <th>#</th>
                             <th>Renter Name</th>
-                            <th>Renter Email</th>
                             <th>Phone number</th>
                             <th>Address</th>
                             <th>Truck Name</th>
-                            <th>Start Time</th>
-                            <th>End Time</th>
+                            <th>Rent Duration</th>
                             <th>Total Rent</th>
                             <th>Action</th>
                         </tr>
@@ -85,14 +83,12 @@ const AllRequest = () => {
                         {requests.map((request, index) => (
                             <tr key={request._id}>
                                 <td>{index + 1}</td>
-                                <td>{request.renterName}</td>
-                                <td>{request.renterEmail}</td>
-                                <td>{request.phone}</td>
+                                <td>{request.renterName}</td> 
+                                <td>{request.phoneNumber}</td>
                                 <td>{request.address}</td>
-                                <td>{request.name}</td>
-                               <td>{request.startDate}</td>
-                               <td>{request.endDate}</td>
-                                <td>{request.totalRent}</td>
+                                <td>{request.truckDetails.name}</td>
+                               <td>{request.bookedTimeSlot.from} - <br />{request.bookedTimeSlot.to}</td>
+                                <td>{request.totalAmount}</td>
                                 <td className="p-2">
                                     {request.type === "admin" ? (
                                         'Admin'

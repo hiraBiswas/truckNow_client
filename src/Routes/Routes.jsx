@@ -17,7 +17,6 @@ import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
 import AdminRoute from "./AdminRoute";
 import AllBooking from "../Pages/Dashboard/AllBooking/AllBooking";
 import AllUser from "../Pages/Dashboard/AllUser/AllUser";
-import BiddingPending from "../Pages/Dashboard/BiddingPending/BiddingPending";
 import RequestedTruckList from "../Pages/Dashboard/RequestedTruckList/RequestedTruckList";
 import AllRequest from "../Pages/Dashboard/AllRequest/AllRequest";
 import AddNewTruck from "../Pages/Dashboard/AddNewTruck/AddNewTruck";
@@ -56,6 +55,9 @@ export const router = createBrowserRouter([
           path: 'contact',
           element: <Contact></Contact>
         },
+
+       
+
         {
             path: '/details/:id',
             element: <PrivateRoute><Details></Details></PrivateRoute>,

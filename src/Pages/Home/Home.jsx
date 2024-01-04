@@ -26,7 +26,7 @@ const Home = () => {
     return (
         <div>
 
-          <iframe src="https://widget.crictimes.org" className="h-[400px]"></iframe>
+          
            <Banner></Banner> 
        
 
