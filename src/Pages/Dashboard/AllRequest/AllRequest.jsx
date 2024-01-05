@@ -3,23 +3,23 @@ import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { FaTrashAlt, FaUsers } from "react-icons/fa";
 import Swal from "sweetalert2";
-import { parse ,format} from 'date-fns';
-import axios from 'axios'; 
+import { parse, format } from 'date-fns';
+import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid';
 import { ToastContainer, toast } from "react-toastify";
 
 const AllRequest = () => {
     const axiosSecure = useAxiosSecure();
     const { data: requests = [], refetch } = useQuery({
-      queryKey: ['requests'],
-      queryFn: async () => {
-        const res = await axiosSecure.get('/rent', {
-          params: {
-            status: 'pending', 
-          },
-        });
-        return res.data;
-      }
+        queryKey: ['requests'],
+        queryFn: async () => {
+            const res = await axiosSecure.get('/rent', {
+                params: {
+                    status: 'pending',
+                },
+            });
+            return res.data;
+        }
     });
 
     const handleApproveRequest = async (request) => {
@@ -27,33 +27,33 @@ const AllRequest = () => {
         const updatedRequest = {
             ...request,
             status: 'Approved',
-     
+
         };
-    
+
         try {
             // Update the status to "Approved" in the rent collection
             await axiosSecure.patch(`/rent/approve/${request._id}`, updatedRequest);
-            
+
             // Show success popup
             refetch();
-           toast.success('Request is approved')
+            toast.success('Request is approved')
         } catch (error) {
             console.error(error);
             // Handle errors if necessary
         }
     };
-          
+
     const handleRejectRequest = async (request) => {
         try {
-          
+
             await axiosSecure.patch(`/rent/reject/${request._id}`, { status: 'Rejected' });
 
-      
+
             refetch();
-           toast.success('Request is rejected')
+            toast.success('Request is rejected')
         } catch (error) {
             console.error(error);
-           
+
         }
     };
 
@@ -83,11 +83,11 @@ const AllRequest = () => {
                         {requests.map((request, index) => (
                             <tr key={request._id}>
                                 <td>{index + 1}</td>
-                                <td>{request.renterName}</td> 
+                                <td>{request.renterName}</td>
                                 <td>{request.phoneNumber}</td>
                                 <td>{request.address}</td>
                                 <td>{request.truckDetails.name}</td>
-                               <td>{request.bookedTimeSlot.from} - <br />{request.bookedTimeSlot.to}</td>
+                                <td>{request.bookedTimeSlot.from} - <br />{request.bookedTimeSlot.to}</td>
                                 <td>{request.totalAmount}</td>
                                 <td className="p-2">
                                     {request.type === "admin" ? (
@@ -97,7 +97,7 @@ const AllRequest = () => {
                                             onClick={() => handleApproveRequest(request)}
                                             className="bg-green-800 btn text-white hover:text-black"
                                         > Approve
-                                           
+
                                         </button>
                                     )}
                                 </td>
@@ -112,7 +112,9 @@ const AllRequest = () => {
                             </tr>
                         ))}
                     </tbody>
+
                 </table>
+               
             </div>
             <ToastContainer></ToastContainer>
         </div>

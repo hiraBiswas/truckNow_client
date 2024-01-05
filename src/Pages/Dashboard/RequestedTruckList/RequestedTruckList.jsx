@@ -5,6 +5,7 @@ import { AuthContext } from "../../../Providers/AuthProvider";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { FaTrashAlt, FaUsers } from "react-icons/fa";
+import { GrUpdate } from "react-icons/gr";
 
 
 const RequestedTruckList = () => {
@@ -16,8 +17,9 @@ const RequestedTruckList = () => {
         fetch('http://localhost:5000/rent')
             .then(response => response.json())
             .then(data => {
-                const userRentData = data.filter(item => item.renterEmail === user.email && item.status == 'Pending');
+                const userRentData = data.filter(item => item.renterEmail === user.email && item.status == 'pending');
                 setRentData(userRentData);
+                console.log(userRentData)
             })
             .catch(error => {
                 console.error('Error fetching  data:', error);
@@ -55,27 +57,45 @@ const RequestedTruckList = () => {
                     <tr>
                         <th>#</th>
                         <th>Image</th>
-                        <th>Name</th>
-                        <th>Total Rent</th>
-                        <th>Status</th>
-                        <th>Action</th>
+                        <th>Truck Name</th>
+                        <th>Time slot</th>
+                        <th>Address</th>
+                        <th>Phone Number</th>
+                        <th>Total Rent</th> 
+                        <th>Update</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody className="p-2">
                     {rentData.map((singleRentData, index) => (
                         <tr key={singleRentData._id}>
                             <td>{index + 1}</td>
-                            <td><img className="h-12 w-12" src={singleRentData.truck_img} /></td>
-                            <td>{singleRentData.name}</td>
-                            <td>{singleRentData.totalRent}</td>
-                            <td>{singleRentData.status}</td>
+                            <td><img className="h-12 w-12" src={singleRentData.truckDetails.img} /></td>
+                            <td>{singleRentData.truckDetails.name}</td>
+                            <td>{singleRentData.bookedTimeSlot.from} - <br />{singleRentData.bookedTimeSlot.to} </td>
+                            <td>{singleRentData.address}</td>
+                            <td>{singleRentData.phoneNumber}</td>
+                            <td>{singleRentData.totalAmount}</td>
+                           
                          
                             <td>
                                 <button
+                                  
+                                    className="btn btn-ghost"
+                                >
+                                    Update
+                                  <GrUpdate className="text-amber-500"></GrUpdate>
+                                   
+                                </button>
+                            </td>
+
+                            <td>
+                            <button
                                     onClick={() => handleDeleteItem(user)}
                                     className="btn btn-ghost btn-lg"
                                 >
-                                    <FaTrashAlt className="text-red-600"></FaTrashAlt>
+                                   
+                                    <FaTrashAlt className="text-amber-500"></FaTrashAlt>
                                 </button>
                             </td>
                         </tr>
