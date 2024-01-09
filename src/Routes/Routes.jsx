@@ -23,6 +23,7 @@ import AddNewTruck from "../Pages/Dashboard/AddNewTruck/AddNewTruck";
 import ManageTruck from "../Pages/Dashboard/ManageTruck/ManageTruck";
 import UpdateTruck from "../Pages/Dashboard/UpdateTruck/UpdateTruck";
 import Contact from "../Pages/Contact/Contact";
+import UpdateRequest from "../Pages/Dashboard/UpdateRequest/UpdateRequest";
 
 
 
@@ -90,11 +91,16 @@ export const router = createBrowserRouter([
           element: <RequestedTruckList></RequestedTruckList>
         },
         
+        {
+          path: 'updateRequest/:id',
+          element: <UpdateRequest></UpdateRequest>,
+          loader: ({params}) => fetch(`http://localhost:5000/rent/${params.id}`)
+        },
 
         // admin only routes
         {
           path: 'adminHome',
-          element:<AdminHome></AdminHome>
+          element:<AdminRoute><AdminHome></AdminHome></AdminRoute>
         },
         {
           path: 'allBooking',

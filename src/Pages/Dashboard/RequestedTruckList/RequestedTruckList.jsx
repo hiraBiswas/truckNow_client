@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 import { useState } from "react";
-import { useLoaderData } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -19,12 +19,15 @@ const RequestedTruckList = () => {
             .then(data => {
                 const userRentData = data.filter(item => item.renterEmail === user.email && item.status == 'pending');
                 setRentData(userRentData);
-                console.log(userRentData)
+              
             })
             .catch(error => {
                 console.error('Error fetching  data:', error);
             });
     }, []);
+    
+   
+
    console.log(rentData)
     const handleDeleteItem = (itemId) => {
         fetch(`http://localhost:5000/rent/${itemId}`, {
@@ -43,6 +46,22 @@ const RequestedTruckList = () => {
                 console.error('Error deleting item:', error);
             });
     };
+    const handleUpdateItem = (itemId, createdAt) => {
+        // Handle update logic here
+        console.log(`Update item with ID ${itemId} created at ${createdAt}`);
+    };
+
+    const isWithin0_2Hours = (createdAt) => {
+        const currentDate = new Date();
+        const createdDate = new Date(createdAt);
+        const timeDifferenceInHours = (currentDate - createdDate) / (1000 * 60 * 60);
+    
+        console.log('Time difference in hours:', timeDifferenceInHours);
+
+        return timeDifferenceInHours <= 24
+    };
+
+
 
     return (
         <div>
@@ -76,28 +95,30 @@ const RequestedTruckList = () => {
                             <td>{singleRentData.address}</td>
                             <td>{singleRentData.phoneNumber}</td>
                             <td>{singleRentData.totalAmount}</td>
-                           
+                            
                          
                             <td>
-                                <button
-                                  
-                                    className="btn btn-ghost"
-                                >
-                                    Update
-                                  <GrUpdate className="text-amber-500"></GrUpdate>
-                                   
-                                </button>
+                            <Link to={`/dashboard/updateRequest/${singleRentData._id}`}>
+                                 <button
+                                        onClick={() => handleUpdateItem(singleRentData._id, singleRentData.createdAt)}
+                                        className="btn btn-ghost"
+                                        disabled={!isWithin0_2Hours(singleRentData.createdAt)}
+                                    >
+                                        Update
+                                        <GrUpdate className="text-amber-500"></GrUpdate>
+                                    </button>
+                                    </Link>
                             </td>
 
                             <td>
-                            <button
+                           <button
                                     onClick={() => handleDeleteItem(user)}
                                     className="btn btn-ghost btn-lg"
                                 >
                                    
                                     <FaTrashAlt className="text-amber-500"></FaTrashAlt>
                                 </button>
-                            </td>
+                                </td>
                         </tr>
                     ))}
                 </tbody>
@@ -107,24 +128,6 @@ const RequestedTruckList = () => {
     </div>
 );
 };
-//         <div className='container mx-auto'>
-//         <h1 className='font-bold text-center py-5 text-black lg:text-2xl'>My Request</h1>
-//          <DataTable  className='text-center'
-        
-//         columns={columns}
-//         data={rentData.map(item => ({
-//             id: item.id,
-//             image:<img className='h-16 w-16 lg:h-24 lg:w-24' src={rentData.truck_img} alt={item.name} />,
-//             name: item.name,
-//             rent: item.rent,
-//             date: item.date,
-           
-//             action: <button onClick={() => handleDeleteItem(item._id)} className='btn bg-amber-500 text-xl text-black'>Delete</button>
-//         }))}
-       
-//     />
-//   <ToastContainer></ToastContainer>
-//        </div>
-//     )}
+    
 
 export default RequestedTruckList;
