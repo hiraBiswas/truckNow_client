@@ -4,7 +4,7 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import { BsGoogle } from 'react-icons/bs';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import SocialLogin from "./SocialLogin.jsx";
+import { FcGoogle } from "react-icons/fc";
 
 
 
@@ -14,7 +14,7 @@ const Login = () => {
     const location = useLocation()
     console.log('location in login page', location)
     const navigate = useNavigate()
-    const { signIn, loading } = useContext(AuthContext)
+    const { signIn, loading, signInWithGoogle } = useContext(AuthContext)
 
 
     const handleLogin = async (e) => {
@@ -43,7 +43,7 @@ const Login = () => {
     }
   };
 
-  
+
     return (
 
         <div className="  mb-10 " >
@@ -71,7 +71,7 @@ const Login = () => {
         </div>
 
         <div className="form-control mt-6">
-          <button onClick={handleGoogleLogin}  className="btn bg-fuchsia-500 text-white">Login With Google</button>
+          <button onClick={handleGoogleLogin}  className="btn btn-outline border-2 border-amber-500 hover:bg-amber-500 hover:text-black hover:border-none "> <FcGoogle className="text-xl" /> Login With Google</button>
         </div>
 
 
