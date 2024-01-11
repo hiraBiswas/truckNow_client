@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import SocialLogin from "./SocialLogin.jsx";
 
 
+
 const Login = () => {
 
    
@@ -30,13 +31,27 @@ const Login = () => {
           toast.error(error.message);
       }
   };
+
+  
+  const handleGoogleLogin = async () => {
+    try {
+      await signInWithGoogle();
+      navigate(location?.state ? location.state : '/dashboard');
+    } catch (error) {
+      console.error('Google Sign-In Error:', error);
+      toast.error('Failed to sign in with Google');
+    }
+  };
+
+  
     return (
 
-        <div className=" max-w-md m-2 lg:mx-auto shadow-drop mb-10">
+        <div className="  mb-10 " >
             <div className="max-w-sm lg:max-w-3xl mx-auto"  >
-                <h2 className="text-2xl font-bold text-black py-5 text-center lg:pt-12   lg:text-4xl ">Login Here !</h2>
-                <div className="flex ">
-                    <form onSubmit={handleLogin} className="py-5 flex-1" >
+                <h2 className="text-2xl font-bold text-black py-5 text-center lg:py-12    lg:text-4xl ">Login Here !</h2>
+                <div className="flex drop-shadow rounded-xl">
+
+                    <form onSubmit={handleLogin} className="py-5 px-5 flex-1 bg-white" >
                     <div className="form-control">
           <label className="label">
             <span className="label-text text-xl font-medium">Email</span>
@@ -51,15 +66,21 @@ const Login = () => {
         
         </div>
         <div className="form-control mt-6">
-          <button className="btn bg-amber-600 text-white">Login</button>
+          <button className="btn bg-amber-500 text-black border-none drop-shadow">Login</button>
+          
         </div>
+
+        <div className="form-control mt-6">
+          <button onClick={handleGoogleLogin}  className="btn bg-fuchsia-500 text-white">Login With Google</button>
+        </div>
+
 
         <p className="py-3 text-lg">Create an account. <NavLink to="/register" className="text-amber-500 font-bold">Sign Up.</NavLink>now</p>
                     </form>
-{/* 
-                    <div className="flex-1 h-full">
-                        <img className="h-[430px]" src="https://i.postimg.cc/jSHMzwjw/1000-F-282091909-OKTHM5-TJG5-Fa-KYRklh8-IFL9073x-NSt-Bg-1-c0-ESK6-Vd-C-transformed.jpg" alt="" />
-                    </div> */}
+
+                  <div className="flex-1 h-full">
+                     <img className="h-[430px] w-96" src="https://i.ibb.co/x68YNsS/images-2.png" alt="" />
+                  </div>
                 </div>
             </div>
 
