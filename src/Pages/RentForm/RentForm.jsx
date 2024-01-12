@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef } from 'react';
 import { AuthContext } from "../../Providers/AuthProvider";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, Navigate, useLoaderData } from "react-router-dom";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from "react";
@@ -9,6 +9,8 @@ import { format, parse, differenceInHours } from 'date-fns'; // Import date-fns 
 import { enUS } from 'date-fns/locale'; // Import locale if needed 
 import { UserOutlined } from '@ant-design/icons';
 import { Input } from 'antd';
+import { Form } from 'antd';
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -26,7 +28,7 @@ const RentForm = () => {
     const [address, setAddress] = useState('');
     const currentDate = new Date();
     const [upcomingBookedTimeSlots, setUpcomingBookedTimeSlots] = useState([]);
-
+    const navigate = useNavigate();
 
     const showBookedTimeSlotsModal = () => {
         const upcomingSlots = bookedTimeSlots.filter((slot) => {
@@ -118,7 +120,8 @@ const RentForm = () => {
             .then((data) => {
                 console.log(data);
                 if (data._id || data.insertedId) {
-                    toast.success('Rent Request is successfully placed');
+                    // toast.success('Rent Request is successfully placed');
+                    navigate('/dashboard/requestedTruck');
                 } else {
                     toast.error('Failed to rent');
                 }
@@ -136,7 +139,7 @@ const RentForm = () => {
             <div className='flex justify-center gap-40 items-center mt-16'>
 
                 <div>
-                    <img className='h-[500px] w-[480px]' src={img} alt="" />
+                    <img className='h-[500px] w-[480px] my-4' src={img} alt="" />
                 </div>
 
                 <div className="flex flex-col justify-end">
@@ -149,6 +152,8 @@ const RentForm = () => {
                         <h2 className='text-lg font-semibold pb-2'>Address: </h2>
                         <Input placeholder="Address" type='text' size='large' required onChange={(e) => setAddress(e.target.value)} />
                     </div>
+    
+
                     <div>
 
                         <div className='flex justify-between items-center mb-4'>

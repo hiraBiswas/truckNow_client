@@ -13,6 +13,8 @@ import { PiUsersFill } from "react-icons/pi";
 import { MdOutlineAddCircleOutline } from "react-icons/md";
 import { MdEdit } from "react-icons/md";
 import { TbBrandBooking } from "react-icons/tb";
+import { MdPending } from "react-icons/md";
+import { IoMdCheckmarkCircle } from "react-icons/io";
 
 const Dashboard = () => {
     const [isAdmin] = useAdmin();
@@ -86,13 +88,13 @@ const Dashboard = () => {
             ) : (
               <>
                 <li className=" hover:text-amber-500 flex flex-row pt-3 py-2 ">
-                <NavLink className="hover:text-amber-500 flex justify-center items-center gap-3" to="/dashboard/userHome"> <MdSpaceDashboard className="text-xl text-white hover:text-amber-500" />   Dashboard</NavLink>
+                <NavLink className="hover:text-amber-500 flex justify-center items-center gap-3" to="/dashboard/allRequest"> <MdSpaceDashboard className="text-xl text-white hover:text-amber-500" /> All Request</NavLink>
                 </li>
                 <li className="hover:text-amber-500 flex flex-row py-2 ">
-                  <NavLink className="hover:text-amber-500 flex justify-center items-center gap-3" to="/dashboard/allMyTrip"><FaBorderAll className="text-xl text-white hover:text-amber-500" /> All My Trip</NavLink>
+                  <NavLink className="hover:text-amber-500 flex justify-center items-center gap-3" to="/dashboard/approvedRequest"><IoMdCheckmarkCircle className="text-xl text-white hover:text-amber-500" /> Approved Request</NavLink>
                 </li>
                 <li className="hover:text-amber-500 flex flex-row py-2 pb-3">
-                  <NavLink className="hover:text-amber-500 flex justify-center items-center gap-3" to="/dashboard/requestedTruck"><FaTruckMoving className="text-xl text-white hover:text-amber-500"  /> Requested Truck List</NavLink>
+                  <NavLink className="hover:text-amber-500 flex justify-center items-center gap-3" to="/dashboard/pendingRequest"><MdPending className="text-xl text-white hover:text-amber-500"  /> Pending Request </NavLink>
                 </li>
               </>
             )}

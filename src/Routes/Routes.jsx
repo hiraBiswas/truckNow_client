@@ -10,20 +10,23 @@ import AllTruck from "../Pages/AllTruck/AllTruck";
 import Details from "../Pages/Details/Details";
 import RentForm from "../Pages/RentForm/RentForm";
 import Dashboard from "../Layout/Dashboard";
-import UserHome from "../Pages/Dashboard/UserHome/UserHome";
-import AllMyTrip from "../Pages/Dashboard/AllMyTrip/AllMyTrip";
+import UserHome from "../Pages/Dashboard/AllRequests/AllRequests";
+import AllMyTrip from "../Pages/Dashboard/ApprovedRequest/ApprovedRequest";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
 import AdminRoute from "./AdminRoute";
 import AllBooking from "../Pages/Dashboard/AllBooking/AllBooking";
 import AllUser from "../Pages/Dashboard/AllUser/AllUser";
 import RequestedTruckList from "../Pages/Dashboard/RequestedTruckList/RequestedTruckList";
-import AllRequest from "../Pages/Dashboard/AllRequest/AllRequest";
+import AllRequest from "../Pages/Dashboard/PendingRequest/PendingRequest";
 import AddNewTruck from "../Pages/Dashboard/AddNewTruck/AddNewTruck";
 import ManageTruck from "../Pages/Dashboard/ManageTruck/ManageTruck";
 import UpdateTruck from "../Pages/Dashboard/UpdateTruck/UpdateTruck";
 import Contact from "../Pages/Contact/Contact";
 import UpdateRequest from "../Pages/Dashboard/UpdateRequest/UpdateRequest";
+import AllRequests from "../Pages/Dashboard/AllRequests/AllRequests";
+import ApprovedRequest from "../Pages/Dashboard/ApprovedRequest/ApprovedRequest";
+import PendingRequest from "../Pages/Dashboard/PendingRequest/PendingRequest";
 
 
 
@@ -79,16 +82,16 @@ export const router = createBrowserRouter([
       children: [
         // normal user routes
         {
-          path: 'userHome',
-          element: <UserHome></UserHome>
+          path: 'allRequest',
+          element: <AllRequests></AllRequests>
         },
         {
-          path: 'allMyTrip',
-          element: <AllMyTrip></AllMyTrip>
+          path: 'approvedRequest',
+          element: <ApprovedRequest></ApprovedRequest>
         },
         {
-          path: 'requestedTruck',
-          element: <RequestedTruckList></RequestedTruckList>
+          path: 'pendingRequest',
+          element: <PendingRequest></PendingRequest>
         },
         
         {

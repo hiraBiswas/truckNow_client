@@ -9,11 +9,14 @@ import { format, parse, differenceInHours } from 'date-fns'; // Import date-fns 
 import { enUS } from 'date-fns/locale'; // Import locale if needed 
 import { UserOutlined } from '@ant-design/icons';
 import { Input } from 'antd';
+import { useNavigate } from 'react-router-dom';
+
 
 
 const UpdateRequest = () => {
     const {user,loading} = useContext(AuthContext)
     const [rentDetails, setRentDetails] = useState({});
+    const navigate = useNavigate();
     const { id } = useParams();
     console.log(id)
    
@@ -142,6 +145,7 @@ const handleUpdateRequest = async (event) => {
 
         if (response.ok) {
             toast.success('Rent data updated successfully');
+            navigate('/dashboard/requestedTruck');
         } else {
             toast.error(`Failed to update rent data: ${response.status}`);
         }
