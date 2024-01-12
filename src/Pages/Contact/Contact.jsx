@@ -47,11 +47,11 @@ const Contact = () => {
 
 
     return (
-        <div className="bg-amber-600">
-            <div className='max-w-6xl mx-auto p-12 '>
+        <div className="bg-amber-600 min-h-screen flex items-center">
+            <div className='max-w-6xl mx-auto p-5 drop-shadow '>
             <div className=" grid grid-cols-2 bg-amber-100 ">
                 <div className="grid grid-cols-2">
-                    <div className="p-5">
+                    <div className="p-10">
                         <h3 className="text-3xl font-bold text-amber-600">Get in Touch</h3>
                         <p className="text-black font-xl py-5 font-bold">We can ensure reliability, lowest cost fares,most importantly <br />safety and security of your product. </p>
                         <p className='py-3'>Our website is very easy to use.You can explore or different categories of trucks and among them you can choose the most suitable one for your purpose. </p>
@@ -59,7 +59,7 @@ const Contact = () => {
 
 
 
-                    <div className="p-5">
+                    <div className="p-10">
                         <div className="flex flex-col">
                             <h1 className="font-bold text-amber-600 pb-3">Call Us</h1>
                             <p className="text-black"> +880 1793250987</p>
@@ -98,7 +98,7 @@ const Contact = () => {
                 </div>
 
 
-                <div>
+                <div className='p-10'>
                     <form onSubmit={handleSubmit} className="card-body">
                         <div className="form-control">
 

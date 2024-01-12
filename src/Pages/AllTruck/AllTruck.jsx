@@ -43,18 +43,18 @@ const AllTruck = () => {
   };
 
   return (
-    <div className="container mx-auto">
+    <div className="max-w-6xl mx-auto">
       <form className="p-5" onSubmit={handleSearch}>
-        <input className="p-2 border-2 rounded-xl text-black" type="text" name="search" />
-        <input type="submit" value="Search" className="btn bg-amber-500 text-black" />
+        <input className="p-2 border-2  text-black max-w-4xl" type="text" name="search" placeholder="search by name" />
+        <input type="submit" value="Search" className="btn bg-amber-500 text-black " />
       </form>
-      <div className="shadow-2xl py-2 lg:py-10 px-10 shadow-drop rounded-xl my-2 lg:my-5 ">
+      <div className=" py-2 lg:py-10 px-10 shadow-drop rounded-xl my-2 lg:my-5 ">
         {currentTruckPage.map((truck) => (
           <TruckCard key={truck._id} truck={truck}></TruckCard>
         ))}
       </div>
 
-      <div className="flex justify-center mt-4">
+      <div className="flex justify-center my-4">
         {Array.from({ length: Math.ceil(filteredTruck.length / ITEMS_PER_PAGE) }, (_, index) => (
           <button
             key={index + 1}

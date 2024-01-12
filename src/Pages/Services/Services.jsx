@@ -17,7 +17,7 @@ const Services = () => {
 
     return (
       <div data-aos="fade-down">
-        <h1 className='text-2xl  mt-10 text-center font-bold lg:text-3xl lg:mt-20 text-black pb-8 '>Why Choose TruckNow </h1>
+        <h1 className='text-2xl  mt-10 text-center font-bold lg:text-4xl lg:mt-20 text-black pb-8 '>Why Choose TruckNow </h1>
         <div  className="mt-5 container bg-amber-500  rounded-lg flex flex-col lg:mx-w-full lg:mx-auto   gap-6 lg:flex-row lg:justify-center items-center">
        
             <div className="p-5 bg-white text-center  w-2/5">
@@ -46,7 +46,7 @@ const Services = () => {
 
                 <div className='border-2 py-8 bg-white  border-amber-400 hover:bg-amber-100'>
                   <div className=' flex justify-center'>
-                  <GrUserWorker className='text-7xl text-amber-600'></GrUserWorker>
+                  <GrUserWorker className='text-7xl text-black'></GrUserWorker>
                   </div>
                     <h1 className='text-2xl font-semibold text-center '>Trained Stuff</h1>
                     <p className='text-center '>Trained stuff for specific work.</p>   

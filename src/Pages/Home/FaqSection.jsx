@@ -34,7 +34,7 @@ const FaqSection = () => {
 
   return (
     <div className="container mx-auto mt-16">
-    <div className='flex gap-20'>
+    <div className='flex  justify-evenly'>
       <div className='flex-1'>
         {questions.map((question, index) => (
           <div key={index} className="mb-3">

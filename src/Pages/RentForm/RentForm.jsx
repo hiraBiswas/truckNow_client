@@ -25,6 +25,18 @@ const RentForm = () => {
     const [phoneNumber, setPhoneNumber] = useState('');
     const [address, setAddress] = useState('');
     const currentDate = new Date();
+    const [upcomingBookedTimeSlots, setUpcomingBookedTimeSlots] = useState([]);
+
+
+    const showBookedTimeSlotsModal = () => {
+        const upcomingSlots = bookedTimeSlots.filter((slot) => {
+            const slotDate = new Date(slot.to); // Assuming the 'to' property represents the end time of the time slot
+            return slotDate > new Date();
+        });
+    
+        setUpcomingBookedTimeSlots(upcomingSlots);
+        document.getElementById('my_modal_5').showModal();
+    };
 
 
     const selectTimeSlots = (values) => {
@@ -121,40 +133,40 @@ const RentForm = () => {
 
     return (
         <div className='container mx-auto'>
-            <div className='flex justify-between items-center mt-16'>
+            <div className='flex justify-center gap-40 items-center mt-16'>
 
                 <div>
-                    <img src={img} alt="" />
+                    <img className='h-[500px] w-[480px]' src={img} alt="" />
                 </div>
 
                 <div className="flex flex-col justify-end">
                     <div>
-                        <h2>Phone Number: </h2>
+                        <h2 className='text-lg font-semibold pb-2'>Phone Number: </h2>
                         <Input placeholder="Phone Number" type='text' size='large' required onChange={(e) => setPhoneNumber(e.target.value)} />
                     </div>
 
                     <div className="my-4">
-                        <h2>Address: </h2>
+                        <h2 className='text-lg font-semibold pb-2'>Address: </h2>
                         <Input placeholder="Address" type='text' size='large' required onChange={(e) => setAddress(e.target.value)} />
                     </div>
                     <div>
 
                         <div className='flex justify-between items-center mb-4'>
-                            <h2>Time Slot: </h2>
+                            <h2 className='text-lg font-semibold pb-2'>Time Slot: </h2>
                             {/* Open the modal using document.getElementById('ID').showModal() method */}
-                            <button className="btn btn-outline border-2 border-amber-500" onClick={() => document.getElementById('my_modal_5').showModal()}>See Booked Time slot</button>
+                            <button className="btn btn-outline border-2 border-amber-500" onClick={() => showBookedTimeSlotsModal()}>See Booked Time slot</button>
                             <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
                                 <div className="modal-box">
                                     <h3 className="font-bold text-lg">Booked Time Slots</h3>
-                                    {bookedTimeSlots && bookedTimeSlots.length > 0 ? (
-                                        <ul>
-                                            {bookedTimeSlots.map((slot, index) => (
-                                                <li key={index}>
-                                                    <strong>From:</strong> {slot.from}, <strong>To:</strong> {slot.to}
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    ) : (
+                                    {upcomingBookedTimeSlots && upcomingBookedTimeSlots.length > 0 ? (
+            <ul>
+                {upcomingBookedTimeSlots.map((slot, index) => (
+                    <li key={index}>
+                        <strong>From:</strong> {slot.from}, <strong>To:</strong> {slot.to}
+                    </li>
+                ))}
+            </ul>
+        ) : (
                                         <p>No booked slots for this truck.</p>
                                     )}
                                     <div className="modal-action">
@@ -183,11 +195,11 @@ const RentForm = () => {
 
 
                     <div className="mt-4">
-                        <h2>Total Hours : {totalHours}</h2>
-                        <h2 className="my-2">Rent Per Hour : {rent} TK</h2>
-                        <h2>Total Rent: {totalAmount} TK</h2>
+                        <h2 className='text-lg font-semibold pb-1'>Total Hours : {totalHours}</h2>
+                        <h2 className="my-2 text-lg font-semibold pb-1">Rent Per Hour : {rent} TK</h2>
+                        <h2 className='text-lg font-semibold pb-1'> Total Rent: {totalAmount} TK</h2>
                     </div>
-                    <div className="my-4">
+                    <div className="my-4 mb-4">
                         <button onClick={handleBookNow} className="bg-amber-500 text-bold btn btn-block">Book Now</button>
                     </div>
 

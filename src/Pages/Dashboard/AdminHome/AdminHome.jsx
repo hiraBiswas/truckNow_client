@@ -16,16 +16,16 @@ const AdminHome = () => {
   const [chartDataByDate, setChartDataByDate] = useState([]);
 
   const [chartData, setChartData] = useState({
-    series: [0, 0, 0], // Default values, will be replaced by actual data
+    series: [approvedCount, pendingCount, rejectedCount], // Default values, will be replaced by actual data
     options: {
       chart: {
-        width: '100%',
+        width: '500',
         type: 'pie',
       },
       labels: ["Approved", "Pending", "Rejected"],
       theme: {
         monochrome: {
-          enabled: true,
+          enabled: false,
         },
       },
       plotOptions: {
@@ -47,6 +47,7 @@ const AdminHome = () => {
       legend: {
         show: false,
       },
+      colors: ["#fb923c", "#ea580c", "#f97316"], 
     },
   });
 
@@ -234,7 +235,7 @@ const AdminHome = () => {
         </div>
       </div>
 
-  <div className="flex">
+  <div className="flex justify-center items-center">
   <div className="h-[300px] max-w-2xl mt-20 ">
         <h2 className="text-xl font-bold mb-8">Bookings by Date</h2>
         <ReactApexChart
@@ -247,7 +248,7 @@ const AdminHome = () => {
 
       <div>
       <div id="chart">
-      <ReactApexChart options={chartData.options} series={chartData.series} type="pie" />
+      <ReactApexChart options={chartData.options} series={chartData.series} type="pie" width={500} />
     </div>
       </div>
   </div>

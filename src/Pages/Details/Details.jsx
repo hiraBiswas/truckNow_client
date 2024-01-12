@@ -7,23 +7,24 @@ const Details = () => {
     const { user, signIn, loading } = useContext(AuthContext);
     const truckDetails = useLoaderData();
     console.log(truckDetails)
-    const {name,_id, category, rent,  img, brand, description} = truckDetails;
+    const {name,_id, category, rent,  img, brand, description, capacity} = truckDetails;
  
 
 
     return (
-        <div className="mt-3 lg:mt-5 container mx-auto ">
-           <div className="p-2 lg:p-12 flex flex-col  lg:flex-row lg:items-center ">
+        <div className="mt-3 lg:mt-5 container mx-auto min-h-[600px] flex  ">
+           <div className="p-2 flex-1 lg:p-12 flex flex-col  lg:flex-row lg:items-center ">
             <div className="flex-1 sm:flex sm:items-baseline">
                
-                <img  className="h-40 mx-16 w-48 lg:h-80 lg:w-80 flex justify-center" src={img} alt="" />
+                <img  className="h-40 mx-16 w-48 lg:h-[500px] lg:w-[480px] flex justify-center" src={img} alt="" />
                
             </div>
-            <div className="text-start flex-1">
+            <div className="text-start flex-1 ml-60 flex  flex-col">
                 <h1 className="text-xl py-2 lg:py-4 font-semibold lg:text-2xl " >{name}</h1>
                 <h3 className="text-sm lg:text-lg">Brand : {brand}</h3>  
                 <h3 className="text-sm lg:text-lg">Category : {category}</h3>    
                 <h3 className="text-sm lg:text-lg">Rent per day: {rent} Tk</h3>
+                <h3 className="text-sm lg:text-lg">Capacity: {capacity}</h3>
                 <h3 className="text-sm lg:text-lg text-start py-3">
            <span className="font-bold text-sm lg:text-xl "> Description:</span> {description}
            </h3>

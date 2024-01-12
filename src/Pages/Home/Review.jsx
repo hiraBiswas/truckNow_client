@@ -8,9 +8,9 @@ AOS.init({
 const Review = () => {
  
     return (
-        <div className="container mx-auto mt-16 ">
-            <h1 className="text-2xl font-bold text-center pb-8 text-amber-500 lg:text-4xl">User Experience</h1>
-            <div  className="grid grid-cols-1 gap-5 p-12 lg:grid-cols-4">
+        <div className="container mx-auto mt-20 ">
+            <h1 className="text-2xl font-bold text-center pb-8 text-black lg:text-4xl">User Experience</h1>
+            <div  className="grid grid-cols-1 gap-5 lg:grid-cols-4">
                  <div data-aos="fade-up" className="py-5">
                     <div className="rounded-xl bg-amber-100 drop-shadow h-80 w-72 shadow-xl">
                    <div className="p-5 ">
