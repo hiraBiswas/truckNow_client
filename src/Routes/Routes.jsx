@@ -82,6 +82,10 @@ export const router = createBrowserRouter([
       children: [
         // normal user routes
         {
+          index: true,
+          element: <AllRequests></AllRequests>
+        },
+        {
           path: 'allRequest',
           element: <AllRequests></AllRequests>
         },
@@ -95,12 +99,16 @@ export const router = createBrowserRouter([
         },
         
         {
-          path: 'updateRequest/:id',
+          index: true,
           element: <UpdateRequest></UpdateRequest>,
           loader: ({params}) => fetch(`http://localhost:5000/rent/${params.id}`)
         },
 
         // admin only routes
+        {
+          path: 'adminHome',
+          element:<AdminRoute><AdminHome></AdminHome></AdminRoute>
+        },
         {
           path: 'adminHome',
           element:<AdminRoute><AdminHome></AdminHome></AdminRoute>
