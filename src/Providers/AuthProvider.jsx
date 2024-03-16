@@ -10,6 +10,8 @@ import {
 } from "firebase/auth";
 import app from "../firebase/firebase.config";
 import useAxiosPublic from "../hooks/UseAxiosPublic"
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const AuthContext = createContext(null);
 
@@ -27,6 +29,7 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password)
       .catch(error => {
+        Toast.error(error)
         console.error("Authentication Error:", error);
         throw error; // Re-throw the error to propagate it further
       });
@@ -86,8 +89,8 @@ const AuthProvider = ({ children }) => {
     signInWithGoogle,
    
   };
+  <ToastContainer></ToastContainer>
 
   return <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>;
 };
-
-export default AuthProvider;
+export default AuthProvider

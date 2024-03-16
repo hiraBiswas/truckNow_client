@@ -145,7 +145,7 @@ const handleUpdateRequest = async (event) => {
 
         if (response.ok) {
             toast.success('Rent data updated successfully');
-            navigate('/dashboard/requestedTruck');
+            navigate('/dashboard/pendingRequest');
         } else {
             toast.error(`Failed to update rent data: ${response.status}`);
         }
@@ -158,13 +158,14 @@ const handleUpdateRequest = async (event) => {
 
     return (
         <div className='container mx-auto'>
-        <div className='flex justify-between items-center mt-16'>
+        <div className='mt-16 '>
+            <h2 className='text-3xl font-bold text-center mb-8'>Update Rent Info</h2>
         
 
-            <div className="flex flex-col ">
-              <form action="">
+            <div className="flex flex-col  ">
+              <form  action="">
               <div className='form-control'>
-                    <h2>Phone Number: </h2>
+                    <h2 className='text-lg font-semibold pb-2'>Phone Number: </h2>
                     <input name='phoneNumber'  ref={phoneNumberRef}  type="text" placeholder="Type here"   defaultValue={pastPhoneNumber}
        className="input input-bordered w-full max-w-2xl focus:border-none" />
        
@@ -173,7 +174,7 @@ const handleUpdateRequest = async (event) => {
                 </div>
 
                 <div className="my-4 form-control">
-                    <h2>Address: </h2>
+                    <h2 className='text-lg font-semibold pb-2'>Address: </h2>
                     <input type="text" defaultValue={pastAddress} ref={addressRef}   placeholder="Type here" className="input input-bordered w-full max-w-2xl focus:border-none" />
        
                 </div>
@@ -183,7 +184,7 @@ const handleUpdateRequest = async (event) => {
                 <div>
 
                     <div className='flex justify-between items-center mb-4'>
-                        <h2>Time Slot: </h2>
+                        <h2 className='text-lg font-semibold pb-2'>Time Slot: </h2>
                         {/* Open the modal using document.getElementById('ID').showModal() method */}
                         <button className="btn btn-outline border-2 border-amber-500" onClick={() => document.getElementById('my_modal_5').showModal()}>See Booked Time slot</button>
                         <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
@@ -227,9 +228,9 @@ const handleUpdateRequest = async (event) => {
 
 
                 <div className="mt-4">
-                    <h2>Total Hours : {totalHours}</h2>
-                    <h2 className="my-2">Rent Per Hour : {truckDetails.rent} TK</h2>
-                    <h2>Total Rent: {totalAmount} TK</h2>
+                    <h2 className='text-lg font-semibold pb-2'>Total Hours : {totalHours}</h2>
+                    <h2 className='text-lg font-semibold pb-2'>Rent Per Hour : {truckDetails.rent} TK</h2>
+                    <h2 className='text-lg font-semibold pb-2'>Total Rent: {totalAmount} TK</h2>
                 </div>
                 <div className="my-4">
                     <button onClick={(e) => handleUpdateRequest(e)} className="bg-amber-500 text-bold btn btn-block">Update</button>

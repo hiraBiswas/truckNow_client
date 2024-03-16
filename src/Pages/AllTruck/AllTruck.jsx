@@ -43,7 +43,7 @@ const AllTruck = () => {
   };
 
   return (
-    <div className="max-w-6xl mx-auto">
+    <div className="max-w-7xl mx-auto min-h-[600px]">
       <form className="p-5" onSubmit={handleSearch}>
         <input className="p-2 border-2  text-black max-w-4xl" type="text" name="search" placeholder="search by name" />
         <input type="submit" value="Search" className="btn bg-amber-500 text-black " />

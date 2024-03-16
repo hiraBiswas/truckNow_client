@@ -70,7 +70,7 @@ export const router = createBrowserRouter([
 
           {
             path: 'truck/rentForm/:id',
-            element:<RentForm></RentForm>,
+            element:<PrivateRoute><RentForm></RentForm></PrivateRoute>,
             loader: ({ params }) => fetch(`http://localhost:5000/truck/${params.id}`)
           },
         
@@ -81,14 +81,16 @@ export const router = createBrowserRouter([
       element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
       children: [
         // normal user routes
-        {
-          index: true,
-          element: <AllRequests></AllRequests>
-        },
+        // {
+        //   index: true,
+        //   element: <AllRequests></AllRequests>
+        // },
         {
           path: 'allRequest',
           element: <AllRequests></AllRequests>
         },
+
+      
         {
           path: 'approvedRequest',
           element: <ApprovedRequest></ApprovedRequest>
@@ -99,48 +101,44 @@ export const router = createBrowserRouter([
         },
         
         {
-          index: true,
+          path: 'updateRequest/:id',
           element: <UpdateRequest></UpdateRequest>,
           loader: ({params}) => fetch(`http://localhost:5000/rent/${params.id}`)
         },
 
-        // admin only routes
-        {
-          path: 'adminHome',
-          element:<AdminRoute><AdminHome></AdminHome></AdminRoute>
-        },
+        
         {
           path: 'adminHome',
           element:<AdminRoute><AdminHome></AdminHome></AdminRoute>
         },
         {
           path: 'allBooking',
-          element: <AllBooking></AllBooking>
+          element: <AdminRoute><AllBooking></AllBooking></AdminRoute>
         
         },
         {
-            path: 'allRequest',
-            element: <AllRequest></AllRequest>
+            path: 'requestedTruckList',
+            element: <AdminRoute><RequestedTruckList></RequestedTruckList></AdminRoute>
            
           },
         {
           path: 'allUser',
-          element: <AllUser></AllUser>
+          element: <AdminRoute><AllUser></AllUser></AdminRoute>
         },
 
         {
           path: 'addTruck',
-         element:<AddNewTruck></AddNewTruck>
+         element:<AdminRoute><AddNewTruck></AddNewTruck></AdminRoute>
         },
 
         {
           path:'manageTruck',
-          element:<ManageTruck></ManageTruck>
+          element:<AdminRoute><ManageTruck></ManageTruck></AdminRoute>
         }
         ,
         {
           path: 'updateTruck/:id',
-          element:<UpdateTruck></UpdateTruck>,
+          element:<AdminRoute><UpdateTruck></UpdateTruck></AdminRoute>,
           loader: ({params}) => fetch(`http://localhost:5000/truck/${params.id}`)
         },
        

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useContext, useEffect } from "react";
 import { useState } from "react";
@@ -52,7 +51,7 @@ const ApprovedRequest = () => {
     return (
       <div>
         <div className="flex justify-evenly my-4">
-          <h2 className="text-3xl font-bold mt-8 mb-5">All Requests </h2>
+          <h2 className="text-3xl font-bold mt-8 mb-5">All Approved Request</h2>
         </div>
         <div className="max-w-7xl min-h-[600px]">
           <table className="table table-zebra w-full">

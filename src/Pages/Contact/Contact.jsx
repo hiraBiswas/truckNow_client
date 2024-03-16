@@ -47,7 +47,7 @@ const Contact = () => {
 
 
     return (
-        <div className="bg-amber-600 min-h-screen flex items-center">
+        <div className="bg-amber-600 min-h-[700px] flex items-center">
             <div className='max-w-6xl mx-auto p-5 drop-shadow '>
             <div className=" grid grid-cols-2 bg-amber-100 ">
                 <div className="grid grid-cols-2">

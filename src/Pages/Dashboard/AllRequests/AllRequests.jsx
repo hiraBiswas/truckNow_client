@@ -1,3 +1,4 @@
+
 import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Providers/AuthProvider';
@@ -28,7 +29,7 @@ const AllRequests = () => {
   console.log(rentData);
 
 //   const handleDeleteItem = (itemId) => {
-//     fetch(`http://localhost:5000/rent/${itemId}`, {
+//     fetch(http://localhost:5000/rent/${itemId}, {
 //       method: 'DELETE',
 //     })
 //       .then(response => {
@@ -103,7 +104,8 @@ const AllRequests = () => {
         </span>
         <button
           onClick={() => setCurrentPage(prev => Math.min(prev + 1, Math.ceil(rentData.length / itemsPerPage)))}
-          disabled={currentPage === Math.ceil(rentData.length / itemsPerPage)}
+
+disabled={currentPage === Math.ceil(rentData.length / itemsPerPage)}
         >
           Next
         </button>

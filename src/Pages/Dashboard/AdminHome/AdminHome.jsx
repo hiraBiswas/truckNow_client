@@ -19,7 +19,7 @@ const AdminHome = () => {
     series: [approvedCount, pendingCount, rejectedCount], // Default values, will be replaced by actual data
     options: {
       chart: {
-        width: '500',
+        width: '400',
         type: 'pie',
       },
       labels: ["Approved", "Pending", "Rejected"],
@@ -36,7 +36,7 @@ const AdminHome = () => {
         },
       },
       title: {
-        text: "Booking Status",
+        text: "",
       },
       dataLabels: {
         formatter(val, opts) {
@@ -67,7 +67,7 @@ const AdminHome = () => {
       },
     },
     fill: {
-      colors: ["#f59e0b"], 
+      colors: ["#ea580c"], 
     },
   });
 
@@ -211,7 +211,7 @@ const AdminHome = () => {
       <div className="flex gap-12">
         <div className="card drop-shadow w-80 bg-base-100 shadow-xl">
           <div className="card-body">
-            <div className="text-2xl font-bold flex flex-col items-center">
+            <div className="text-2xl font-bold flex flex-col gap-4 items-center">
               <CountUp className="text-2xl font-bold text-center" start={0} end={truckCount} duration={1} />
               <h2 className="card-title text-center">Total Truck</h2>
             </div>
@@ -219,25 +219,25 @@ const AdminHome = () => {
         </div>
         <div className="card drop-shadow w-80 bg-base-100 shadow-xl">
           <div className="card-body">
-            <h2 className="card-title">Card title!</h2>
-            <div className="text-2xl font-bold">
+            <div className="text-2xl font-bold flex flex-col gap-4 items-center">
               <CountUp className="text-2xl font-bold" start={0} end={userData.length} duration={3} />
+              <h2 className="card-title">Total User</h2>
             </div>
           </div>
         </div>
         <div className="card drop-shadow w-80 bg-base-100 shadow-xl">
           <div className="card-body">
-            <h2 className="card-title">Card title!</h2>
-            <div className="text-2xl font-bold">
+            <div  className="text-2xl font-bold flex flex-col gap-4 items-center">
               <CountUp className="text-2xl font-bold" start={0} end={bookedCount} duration={3} />
+              <h2 className="card-title">Total Booking</h2>
             </div>
           </div>
         </div>
       </div>
 
-  <div className="flex justify-center items-center">
-  <div className="h-[300px] max-w-2xl mt-20 ">
-        <h2 className="text-xl font-bold mb-8">Bookings by Date</h2>
+  <div className="flex justify-between items-center">
+  <div className="h-[300px] w-[500px] mt-20 ">
+        <h2 className="text-xl font-bold text-center mb-8">Bookings by Date</h2>
         <ReactApexChart
           options={chartOptionsByDate}
           series={[{ name: "Bookings", data: chartDataByDate }]}
@@ -246,9 +246,10 @@ const AdminHome = () => {
         />
       </div>
 
-      <div>
-      <div id="chart">
-      <ReactApexChart options={chartData.options} series={chartData.series} type="pie" width={500} />
+      <div >
+      <div className="h-[300px] w-[500px] mt-20 " id="chart">
+      <h2 className="text-xl font-bold mb-8 text-center">Bookings Status</h2>
+      <ReactApexChart options={chartData.options} className="flex items-center ml-16" series={chartData.series} type="pie" width={400} />
     </div>
       </div>
   </div>

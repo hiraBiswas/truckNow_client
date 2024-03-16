@@ -106,10 +106,10 @@ const Register = () => {
   };
   return (
     <div className=" py-2 lg:py-5 shadow-drop">
-      <div className="max-w-md mx-auto">
-        <div className="max-w-3xl py-2 mx-auto flex-1 lg:py-5 " >
+      <div className="max-w-3xl mx-auto">
+        <div className=" py-2 mx-auto flex-1 lg:py-5 " >
           <h2 className="text-2xl font-bold text-center   lg:text-4xl pt-3 ">Register Here !</h2>
-          <div className="">
+          <div className=" flex drop-shadow items-center justify-center rounded-xl">
             <div>
               <form  onSubmit={handleSubmit(onSubmit)} className="py-2 lg:py-8 " >
                 <div className="form-control px-12 ">
@@ -157,9 +157,9 @@ const Register = () => {
             </div>
 
 
-            {/* <div>
-              <img src="https://i.postimg.cc/jSHMzwjw/1000-F-282091909-OKTHM5-TJG5-Fa-KYRklh8-IFL9073x-NSt-Bg-1-c0-ESK6-Vd-C-transformed.jpg" alt="" />
-            </div> */}
+            <div className="flex-1 h-full">
+                     <img className="h-[400px] w-96" src="https://i.ibb.co/x68YNsS/images-2.png" alt="" />
+                  </div>
           </div>
         </div>
         <ToastContainer />

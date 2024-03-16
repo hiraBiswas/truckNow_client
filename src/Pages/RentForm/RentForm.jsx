@@ -121,7 +121,7 @@ const RentForm = () => {
                 console.log(data);
                 if (data._id || data.insertedId) {
                     // toast.success('Rent Request is successfully placed');
-                    navigate('/dashboard/requestedTruck');
+                    navigate('/dashboard/pendingRequest');
                 } else {
                     toast.error('Failed to rent');
                 }

@@ -19,12 +19,7 @@ const Navbar = () => {
       )}
     </>
 
-const profileLinks =<>
-<li className="text-sm lg:text-sm font-medium text-black "><NavLink to="/requestedTruck">Requested Truck</NavLink></li>
-<li className="text-sm lg:text-sm font-medium text-black "><NavLink to="">Approved Truck</NavLink></li>
 
-
-</>
 
 
 
@@ -69,9 +64,7 @@ const handleSignOut=()=>{
                 alt="Profile"
                 className="h-10 w-10 rounded-full mr-2"
               /></label>
-  <ul tabIndex={0} className="dropdown-content z-[1] menu -ml-20 p-2 shadow bg-base-100 rounded-box w-52">
- {profileLinks}
-  </ul>
+
 </div>
              
               <span className="text-lg font-semibold hidden text-white lg:block">{user.displayName}</span>

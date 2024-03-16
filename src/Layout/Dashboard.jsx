@@ -1,5 +1,4 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
-import Navbar from "../Pages/Shared/Navbar/Navbar";
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 import useAdmin from "../hooks/useAdmin";
@@ -55,7 +54,7 @@ const Dashboard = () => {
             {/* Sidebar content here */}
             <Link to="/">
               <img className="h-12 w-20" src="https://i.ibb.co/LSJFDGt/Hanover-removebg-preview-2.png" alt="" />
-              <h3 className="text-2xl font-bold text-black pb-5">TruckNow</h3>
+              <h3 className="text-2xl font-bold text-white pb-5">TruckNow</h3>
             </Link>
             {isAdmin ? (
               <>
@@ -80,7 +79,7 @@ const Dashboard = () => {
                 </li>
               
                 <li className="font-semibold hover:text-amber-500 py-1 pb-3">
-                  <NavLink className="hover:text-amber-500 flex items-center gap-3" to="/dashboard/allRequest"> <FaBorderAll className="text-xl text-white hover:text-amber-500" /> All Request</NavLink>
+                  <NavLink className="hover:text-amber-500 flex items-center gap-3" to="/dashboard/requestedTruckList"> <FaBorderAll className="text-xl text-white hover:text-amber-500" /> All Request</NavLink>
                 </li>
 
               

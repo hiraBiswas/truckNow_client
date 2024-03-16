@@ -26,24 +26,29 @@ const PendingRequest = () => {
 
   console.log(rentData);
 
-  const handleDeleteItem = (itemId) => {
-    fetch(`http://localhost:5000/rent/${itemId}`, {
-      method: 'DELETE',
-    })
-      .then(response => {
-        if (response) {
-          const remainingData = rentData.filter(dataItem => dataItem._id !== itemId);
-          toast.success('Deleted Successfully');
-          setRentData(remainingData);
-        } else {
-          toast.error('Failed to Delete');
-        }
-      })
-      .catch(error => {
-        console.error('Error deleting item:', error);
+  const handleDeleteItem = async (itemId) => {
+    try {
+      console.log('Deleting item with ID:', itemId);
+  
+      const response = await fetch(`http://localhost:5000/rent/${itemId}`, {
+        method: 'DELETE',
       });
+  
+      console.log('Delete response:', response);
+  
+      if (response.ok) {
+        const remainingData = rentData.filter(dataItem => dataItem._id !== itemId);
+        console.log('Remaining Data after deletion:', remainingData);
+        toast.success('Deleted Successfully');
+        setRentData(remainingData);
+      } else {
+        toast.error('Failed to Delete');
+      }
+    } catch (error) {
+      console.error('Error deleting item:', error);
+    }
   };
-
+  
   const handleUpdateItem = (itemId, createdAt) => {
     // Handle update logic here
     console.log(`Update item with ID ${itemId} created at ${createdAt}`);

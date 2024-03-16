@@ -5,6 +5,7 @@ import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import { useLoaderData } from 'react-router-dom';
 import { useState } from 'react';
 import useAxiosPublic from '../../../hooks/UseAxiosPublic';
+import { useNavigate } from 'react-router-dom';
 
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
@@ -13,7 +14,7 @@ const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_ke
 
 const UpdateTruck = () => {
     const {img,name,brand, category, capacity, rent,fuel, description, _id} = useLoaderData();
-    
+    const navigate= useNavigate()
 
     const axiosSecure = useAxiosSecure();
     const handleUpdateTruck = async (event) => {
@@ -82,6 +83,7 @@ const UpdateTruck = () => {
             // show success popup
             form.reset();
             toast.success('Successfully updated');
+            navigate('/dashboard/manageTruck');
           } else {
             toast.error('Could not be updated');
           }
@@ -93,21 +95,21 @@ const UpdateTruck = () => {
     
 
     return (
-        <div className="mt-10 container mx-auto lg:mt-12  rounded-2xl drop-shadow">
-      <h1 className="mx-auto p-10 text-amber-600 font-semibold text-center text-2xl lg:text-4xl">Update Truck</h1>
+        <div className="mt-10 container mx-auto lg:mt-12  rounded-2xl ">
+      <h1 className="mx-auto p-10 text-black font-bold text-center text-2xl lg:text-4xl">Update Truck</h1>
 
       <form onSubmit={handleUpdateTruck} className="max-w-md lg:max-w-6xl px-10">
                     <div className="flex flex-col gap-6 w-full lg:flex-row">
                     <div className="form-control w-1/2 flex-1">
                             <label className="label">
-                                <span className="label-text">Name</span>
+                                <span className="label-text text-lg font-semibold pb-1 ">Name</span>
                             </label>
                             <input defaultValue={name} type="text" placeholder="name" name="name" className="input input-bordered" required />
 
                         </div>
                         <div className="form-control w-1/2 flex-1">
                             <label className="label">
-                                <span className="label-text">Image</span>
+                                <span className="label-text text-lg font-semibold pb-1">Image</span>
                             </label>
                             <input  type="file" placeholder="image " name="image" className="input input-bordered" required />
                         </div>
@@ -119,7 +121,7 @@ const UpdateTruck = () => {
                     <div className="flex flex-col gap-6 w-full items-center lg:flex-row">
                     <div className="form-control flex-1">
                             <label className="label">
-                                <span className="label-text">Brand</span>
+                                <span className="label-text text-lg font-semibold pb-1">Brand</span>
                             </label>
                             <input defaultValue={brand} type="text" placeholder="brand" name="brand" className="input input-bordered" required />
 
@@ -128,7 +130,7 @@ const UpdateTruck = () => {
 
                         <div className="form-control flex-1">
                         <label className="input-group">
-                        <span className="label-text bg-transparent -ml-2 my-2">Category</span>
+                        <span className="label-text bg-transparent -ml-2 my-2 text-lg font-semibold pb-1">Category</span>
                         </label>
                         <label className="input-group">
             <select name="category" className="input input-bordered w-full"  defaultValue={category}>
@@ -148,13 +150,13 @@ const UpdateTruck = () => {
                     <div className="flex flex-col gap-6 w-full lg:flex-row">
                     <div className="form-control flex-1">
                             <label className="label">
-                                <span className="label-text">Capacity</span>
+                                <span className="label-text text-lg font-semibold pb-1">Capacity</span>
                             </label>
                             <input defaultValue={capacity} type="text" placeholder="capacity" name="capacity" className="input input-bordered" required />
                         </div>
                         <div className="form-control flex-1">
                             <label className="label">
-                                <span className="label-text">Fuel</span>
+                                <span className="label-text text-lg font-semibold pb-1">Fuel</span>
                             </label>
                             <input defaultValue={fuel} type="text" placeholder="fuel" name="fuel" className="input input-bordered" required />
                         </div>
@@ -164,14 +166,14 @@ const UpdateTruck = () => {
                  <div className="flex gap-6">
                  <div className="form-control flex-1">
                         <label className="label">
-                            <span className="label-text">Rent</span>
+                            <span className="label-text text-lg font-semibold pb-1">Rent</span>
                         </label>
                         <input defaultValue={rent} type="text" placeholder="rent" name="rent" className="input input-bordered" required />
                     </div>
 
                     <div className="form-control flex-1">
                         <label className="label">
-                            <span className="label-text">Short Description</span>
+                            <span className="label-text text-lg font-semibold pb-1">Short Description</span>
                         </label>
                         <input defaultValue={description} type="text" placeholder="description" name="description" className="input input-bordered" required />
                     </div>

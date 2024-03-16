@@ -1,12 +1,14 @@
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
+import { useNavigate } from 'react-router-dom';
 
 
 const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
 const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 const AddNewTruck=()=>{
     const axiosSecure = useAxiosSecure();
+    const navigate = useNavigate()
     const handleAddTruck = async (event) => {
         event.preventDefault();
         const form = event.target;
@@ -62,7 +64,8 @@ const AddNewTruck=()=>{
             capacity,
             fuel,
             description,
-            rent
+            rent,
+            bookedTimeSlots: [],
           };
     
           // Post the new truck data to your server
@@ -72,7 +75,9 @@ const AddNewTruck=()=>{
           if (newTruckResponse.data.insertedId) {
             // show success popup
             form.reset();
-            toast.success('Truck added to the database');
+            toast.success('Truck added successfully');
+            navigate('/dashboard/manageTruck');
+
           } else {
             toast.error('Truck could not be added');
           }
@@ -83,21 +88,21 @@ const AddNewTruck=()=>{
       };
     
   return (
-    <div className="mt-10 container mx-auto lg:mt-12  rounded-2xl drop-shadow">
-      <h1 className="mx-auto p-10 text-amber-600 font-semibold text-center text-2xl lg:text-4xl">Add New Truck</h1>
+    <div className="mt-10 container mx-auto lg:mt-12  rounded-2xl ">
+      <h1 className="mx-auto p-10 text-black font-semibold text-center text-2xl lg:text-4xl">Add New Truck</h1>
 
       <form onSubmit={handleAddTruck} className="max-w-md lg:max-w-6xl px-10">
                     <div className="flex flex-col gap-6 w-full lg:flex-row">
                     <div className="form-control w-1/2 flex-1">
                             <label className="label">
-                                <span className="label-text">Name</span>
+                                <span className="label-text text-lg font-semibold pb-1">Name:</span>
                             </label>
                             <input type="text" placeholder="name" name="name" className="input input-bordered" required />
 
                         </div>
                         <div className="form-control w-1/2 flex-1">
                             <label className="label">
-                                <span className="label-text">Image</span>
+                                <span className="label-text text-lg font-semibold pb-1">Image</span>
                             </label>
                             <input type="file" placeholder="image " name="image" className="input input-bordered" required />
                         </div>
@@ -109,7 +114,7 @@ const AddNewTruck=()=>{
                     <div className="flex flex-col gap-6 w-full items-center lg:flex-row">
                     <div className="form-control flex-1">
                             <label className="label">
-                                <span className="label-text">Brand</span>
+                                <span className="label-text text-lg font-semibold pb-1">Brand</span>
                             </label>
                             <input type="text" placeholder="brand" name="brand" className="input input-bordered" required />
 
@@ -118,7 +123,7 @@ const AddNewTruck=()=>{
 
                         <div className="form-control flex-1">
                         <label className="input-group">
-                        <span className="label-text bg-transparent -ml-2 my-2">Category</span>
+                        <span className="label-text bg-transparent -ml-2 my-2 text-lg font-semibold pb-1">Category</span>
                         </label>
                         <label className="input-group">
             <select name="category" className="input input-bordered w-full"  defaultValue="">
@@ -138,13 +143,13 @@ const AddNewTruck=()=>{
                     <div className="flex flex-col gap-6 w-full lg:flex-row">
                     <div className="form-control flex-1">
                             <label className="label">
-                                <span className="label-text">Capacity</span>
+                                <span className="label-text text-lg font-semibold pb-1">Capacity</span>
                             </label>
                             <input type="text" placeholder="capacity" name="capacity" className="input input-bordered" required />
                         </div>
                         <div className="form-control flex-1">
                             <label className="label">
-                                <span className="label-text">Fuel</span>
+                                <span className="label-text text-lg font-semibold pb-1">Fuel</span>
                             </label>
                             <input type="text" placeholder="fuel" name="fuel" className="input input-bordered" required />
                         </div>
@@ -155,7 +160,7 @@ const AddNewTruck=()=>{
 
                  <div className="form-control flex-1">
                         <label className="label">
-                            <span className="label-text">Rent</span>
+                            <span className="label-text text-lg font-semibold pb-1">Rent</span>
                         </label>
                         <input type="text" placeholder="rent" name="rent" className="input input-bordered" required />
                     </div>
@@ -163,7 +168,7 @@ const AddNewTruck=()=>{
 
                  <div className="form-control flex-1">
                         <label className="label">
-                            <span className="label-text">Short Description</span>
+                            <span className="label-text text-lg font-semibold pb-1">Short Description</span>
                         </label>
                         <input type="text" placeholder="description" name="description" className="input input-bordered" required />
                     </div>

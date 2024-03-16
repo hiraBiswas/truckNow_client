@@ -42,32 +42,32 @@ const ManageTruck = () => {
 
     return (
         <div className="max-w-6xl  mx-auto mt-10">
-       <h1 className="text-2xl font-bold text-center text-amber-500 lg:text-3xl pb-8">All Trucks</h1>
+       <h1 className="text-2xl font-bold text-center text-black lg:text-3xl pb-8">All Trucks</h1>
         < div >
             <div className="overflow-x-auto">
                 <table className="table w-full">
                     {/* head */}
                     <thead>
                         <tr>
-                            <th>
+                            <th className='text-lg font-semibold text-black '>
                                 #
                             </th>
-                            <th>Image</th>
-                            <th>Name</th>
-                            <th>Category</th>
-                            <th>Capacity</th>
-                            <th>Rent</th>
-                            <th>Update</th>
-                            <th>Delete</th>
+                            <th className='text-lg font-semibold text-black '>Image</th>
+                            <th className='text-lg font-semibold text-black '>Name</th>
+                            <th className='text-lg font-semibold text-black '>Category</th>
+                            <th className='text-lg font-semibold text-black '>Capacity</th>
+                            <th className='text-lg font-semibold text-black '>Rent</th>
+                            <th className='text-lg font-semibold text-black '>Update</th>
+                            <th className='text-lg font-semibold text-black '>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
                         {
                             truck.map((truck, index) => <tr key={truck._id}>
-                                <td>
+                                <td className="text-right text-base text-black ">
                                     {index + 1}
                                 </td>
-                                <td>
+                                <td className="text-right text-base text-black ">
                                     <div className="flex items-center gap-3">
                                         <div className="avatar">
                                             <div className="mask mask-squircle w-12 h-12">
@@ -80,13 +80,13 @@ const ManageTruck = () => {
                                     {truck.name}
                                 </td>
                                
-                                <td className="text-right">{truck.category}</td>
-                                <td className="text-right">{truck.capacity}</td>
-                                <td className="text-right">{truck.rent}</td>
+                                <td className="text-right text-base text-black ">{truck.category}</td>
+                                <td className="text-right text-base text-black ">{truck.capacity}</td>
+                                <td className="text-right text-base text-black ">{truck.rent}</td>
                                 <td>
                                     <Link to={`/dashboard/updateTruck/${truck._id}`}>
                                         <button
-                                            className="btn btn-ghost text-black bg-orange-500">
+                                            className="btn btn-outline border-2 border-amber-500 text-black">
                                             Update
                                         </button>
                                     </Link>
