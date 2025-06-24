@@ -92,7 +92,7 @@ const AdminHome = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/rent");
+        const response = await axios.get("https://car-doctor-server-v1-sigma.vercel.app/rent");
         const rentData = response.data;
   
         // Filter data based on status
@@ -171,7 +171,7 @@ const AdminHome = () => {
   
     const fetchTruckData = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/truck");
+        const response = await axios.get("https://car-doctor-server-v1-sigma.vercel.app/truck");
         setTruckCount(response.data.length);
       } catch (error) {
         console.error("Error fetching truck data:", error);
@@ -180,7 +180,7 @@ const AdminHome = () => {
 
     const fetchBookedData = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/booked');
+        const response = await axios.get('https://car-doctor-server-v1-sigma.vercel.app/booked');
         setBookedCount(response.data.length);
       } catch (error) {
         console.error("Error fetching booked data:", error);

@@ -15,7 +15,7 @@ const Home = () => {
     const [trucks, setTrucks] = useState(null);
 
     useEffect(() => {
-      fetch('http://localhost:5000/truck')
+      fetch('https://car-doctor-server-v1-sigma.vercel.app/truck')
         .then(response => response.json())
         .then(data => {
           setTrucks(data); 

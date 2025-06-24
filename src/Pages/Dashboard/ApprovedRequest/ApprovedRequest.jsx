@@ -15,7 +15,7 @@ const ApprovedRequest = () => {
     const itemsPerPage = 7;
   
     useEffect(() => {
-      fetch('http://localhost:5000/rent')
+      fetch('https://car-doctor-server-v1-sigma.vercel.app/rent')
         .then(response => response.json())
         .then(data => {
           const userRentData = data
@@ -69,28 +69,36 @@ const ApprovedRequest = () => {
                
               </tr>
             </thead>
-            <tbody className="p-2 ">
-              {rentData
-                .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
-                .map((singleRentData, index) => (
-                  <tr className='text-base text-black ' key={singleRentData._id}>
-                    <td>{index + 1}</td>
-                    <td>
-                      <img className="h-12 w-16" src={singleRentData.truckDetails.img} alt="" />
-                    </td>
-                    <td>{singleRentData.truckDetails.name}</td>
-                    <td>
-                      {singleRentData.bookedTimeSlot.from} - <br />
-                      {singleRentData.bookedTimeSlot.to}
-                    </td>
-                    <td>{singleRentData.address}</td>
-                    <td>{singleRentData.phoneNumber}</td>
-                    <td>{singleRentData.totalAmount}</td>
-                    <td>{singleRentData.status}</td>
-                   
-                  </tr>
-                ))}
-            </tbody>
+          <tbody className="p-2 ">
+  {rentData.length === 0 ? (
+    <tr>
+      <td colSpan="8" className="text-center text-lg text-gray-600 py-10">
+        No approved requests found.
+      </td>
+    </tr>
+  ) : (
+    rentData
+      .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
+      .map((singleRentData, index) => (
+        <tr className='text-base text-black ' key={singleRentData._id}>
+          <td>{index + 1}</td>
+          <td>
+            <img className="h-12 w-16" src={singleRentData.truckDetails.img} alt="" />
+          </td>
+          <td>{singleRentData.truckDetails.name}</td>
+          <td>
+            {singleRentData.bookedTimeSlot.from} - <br />
+            {singleRentData.bookedTimeSlot.to}
+          </td>
+          <td>{singleRentData.address}</td>
+          <td>{singleRentData.phoneNumber}</td>
+          <td>{singleRentData.totalAmount}</td>
+          <td>{singleRentData.status}</td>
+        </tr>
+      ))
+  )}
+</tbody>
+
           </table>
         </div>
         <ToastContainer></ToastContainer>

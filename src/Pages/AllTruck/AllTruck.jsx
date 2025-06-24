@@ -9,7 +9,7 @@ const AllTruck = () => {
   const [currentPage, setCurrentPage] = useState(1);
 
   useEffect(() => {
-    fetch('http://localhost:5000/truck')
+    fetch('https://car-doctor-server-v1-sigma.vercel.app/truck')
       .then(response => response.json())
       .then(data => {
         console.log(data);

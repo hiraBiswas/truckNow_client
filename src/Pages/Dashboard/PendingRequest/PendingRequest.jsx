@@ -13,7 +13,7 @@ const PendingRequest = () => {
   const itemsPerPage = 7; // Change this to show the desired number of items per page
 
   useEffect(() => {
-    fetch('http://localhost:5000/rent')
+    fetch('https://car-doctor-server-v1-sigma.vercel.app/rent')
       .then(response => response.json())
       .then(data => {
         const userRentData = data.filter(item => item.renterEmail === user.email && item.status === 'pending');
@@ -30,7 +30,7 @@ const PendingRequest = () => {
     try {
       console.log('Deleting item with ID:', itemId);
   
-      const response = await fetch(`http://localhost:5000/rent/${itemId}`, {
+      const response = await fetch(`https://car-doctor-server-v1-sigma.vercel.app/rent/${itemId}`, {
         method: 'DELETE',
       });
   
@@ -88,46 +88,55 @@ const PendingRequest = () => {
               <th className='text-lg font-semibold text-black '>Delete</th>
             </tr>
           </thead>
-          <tbody className="p-2">
-            {rentData
-              .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
-              .map((singleRentData, index) => (
-                <tr key={singleRentData._id}>
-                  <td>{index + 1}</td>
-                  <td>
-                    <img className="h-12 w-12" src={singleRentData.truckDetails.img} alt="" />
-                  </td>
-                  <td>{singleRentData.truckDetails.name}</td>
-                  <td>
-                    {singleRentData.bookedTimeSlot.from} - <br />
-                    {singleRentData.bookedTimeSlot.to}
-                  </td>
-                  <td>{singleRentData.address}</td>
-                  <td>{singleRentData.phoneNumber}</td>
-                  <td>{singleRentData.totalAmount}</td>
-                  <td>
-                    <Link to={`/dashboard/updateRequest/${singleRentData._id}`}>
-                      <button
-                        onClick={() => handleUpdateItem(singleRentData._id, singleRentData.createdAt)}
-                        className="btn btn-ghost"
-                        disabled={!isWithin0_2Hours(singleRentData.createdAt)}
-                      >
-                        Update
-                        <GrUpdate className="text-amber-500"></GrUpdate>
-                      </button>
-                    </Link>
-                  </td>
-                  <td>
-                    <button
-                      onClick={() => handleDeleteItem(singleRentData._id)}
-                      className="btn btn-ghost btn-lg"
-                    >
-                      <FaTrashAlt className="text-amber-500"></FaTrashAlt>
-                    </button>
-                  </td>
-                </tr>
-              ))}
-          </tbody>
+       <tbody className="p-2">
+  {rentData.length === 0 ? (
+    <tr>
+      <td colSpan="9" className="text-center text-lg text-gray-600 py-10">
+        No pending requests found.
+      </td>
+    </tr>
+  ) : (
+    rentData
+      .slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage)
+      .map((singleRentData, index) => (
+        <tr key={singleRentData._id}>
+          <td>{index + 1}</td>
+          <td>
+            <img className="h-12 w-12" src={singleRentData.truckDetails.img} alt="" />
+          </td>
+          <td>{singleRentData.truckDetails.name}</td>
+          <td>
+            {singleRentData.bookedTimeSlot.from} - <br />
+            {singleRentData.bookedTimeSlot.to}
+          </td>
+          <td>{singleRentData.address}</td>
+          <td>{singleRentData.phoneNumber}</td>
+          <td>{singleRentData.totalAmount}</td>
+          <td>
+            <Link to={`/dashboard/updateRequest/${singleRentData._id}`}>
+              <button
+                onClick={() => handleUpdateItem(singleRentData._id, singleRentData.createdAt)}
+                className="btn btn-ghost"
+                disabled={!isWithin0_2Hours(singleRentData.createdAt)}
+              >
+                Update
+                <GrUpdate className="text-amber-500" />
+              </button>
+            </Link>
+          </td>
+          <td>
+            <button
+              onClick={() => handleDeleteItem(singleRentData._id)}
+              className="btn btn-ghost btn-lg"
+            >
+              <FaTrashAlt className="text-amber-500" />
+            </button>
+          </td>
+        </tr>
+      ))
+  )}
+</tbody>
+
         </table>
       </div>
       <ToastContainer></ToastContainer>

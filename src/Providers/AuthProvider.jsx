@@ -13,6 +13,8 @@ import useAxiosPublic from "../hooks/UseAxiosPublic"
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
+
+
 export const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
@@ -34,6 +36,8 @@ const AuthProvider = ({ children }) => {
         throw error; // Re-throw the error to propagate it further
       });
   };
+
+
   const signInWithGoogle = () => {
     setLoading(true);
     const provider = new GoogleAuthProvider();

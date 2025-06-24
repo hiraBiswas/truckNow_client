@@ -14,7 +14,7 @@ const RequestedTruck = () => {
     console.log(loadedData);
 
     useEffect(() => {
-        fetch('http://localhost:5000/rent')
+        fetch('https://car-doctor-server-v1-sigma.vercel.app/rent')
             .then(response => response.json())
             .then(data => {
                 const userRentData = data.filter(item => item.buyerEmail === user.email);
@@ -26,7 +26,7 @@ const RequestedTruck = () => {
     }, []);
 
     const handleDeleteItem = (itemId) => {
-        fetch(`http://localhost:5000/rent/${itemId}`, {
+        fetch(`https://car-doctor-server-v1-sigma.vercel.app/rent/${itemId}`, {
             method: 'DELETE',
         })
             .then(response => {

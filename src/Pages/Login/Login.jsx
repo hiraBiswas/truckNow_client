@@ -10,7 +10,7 @@ import { FcGoogle } from "react-icons/fc";
 
 const Login = () => {
 
-   
+    
     const location = useLocation()
     console.log('location in login page', location)
     const navigate = useNavigate()

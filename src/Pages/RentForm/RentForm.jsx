@@ -109,7 +109,7 @@ const RentForm = () => {
 
         console.log(newRent);
 
-        fetch('http://localhost:5000/rent', {
+        fetch('https://car-doctor-server-v1-sigma.vercel.app/rent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

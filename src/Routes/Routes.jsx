@@ -65,13 +65,13 @@ export const router = createBrowserRouter([
         {
             path: '/details/:id',
             element: <PrivateRoute><Details></Details></PrivateRoute>,
-            loader: ({ params }) => fetch(`http://localhost:5000/truck/${params.id}`)
+            loader: ({ params }) => fetch(`https://car-doctor-server-v1-sigma.vercel.app/truck/${params.id}`)
           },
 
           {
             path: 'truck/rentForm/:id',
             element:<PrivateRoute><RentForm></RentForm></PrivateRoute>,
-            loader: ({ params }) => fetch(`http://localhost:5000/truck/${params.id}`)
+            loader: ({ params }) => fetch(`https://car-doctor-server-v1-sigma.vercel.app/truck/${params.id}`)
           },
         
       ]
@@ -103,7 +103,7 @@ export const router = createBrowserRouter([
         {
           path: 'updateRequest/:id',
           element: <UpdateRequest></UpdateRequest>,
-          loader: ({params}) => fetch(`http://localhost:5000/rent/${params.id}`)
+          loader: ({params}) => fetch(`https://car-doctor-server-v1-sigma.vercel.app/rent/${params.id}`)
         },
 
         
@@ -139,7 +139,7 @@ export const router = createBrowserRouter([
         {
           path: 'updateTruck/:id',
           element:<AdminRoute><UpdateTruck></UpdateTruck></AdminRoute>,
-          loader: ({params}) => fetch(`http://localhost:5000/truck/${params.id}`)
+          loader: ({params}) => fetch(`https://car-doctor-server-v1-sigma.vercel.app/truck/${params.id}`)
         },
        
       ]

@@ -25,7 +25,7 @@ const UpdateRequest = () => {
             try {
                 // Check if id is defined before making the API call
                 if (id) {
-                    const response = await fetch(`http://localhost:5000/rent/${id}`);
+                    const response = await fetch(`https://car-doctor-server-v1-sigma.vercel.app/rent/${id}`);
                     
                     // Check if the response status is OK (200)
                     if (response.ok) {
@@ -135,7 +135,7 @@ const handleUpdateRequest = async (event) => {
     console.log(updatedRent)
 
     try {
-        const response = await fetch(`http://localhost:5000/rent/${id}`, {
+        const response = await fetch(`https://car-doctor-server-v1-sigma.vercel.app/rent/${id}`, {
             method:  'PATCH',
             headers: {
                 'Content-Type': 'application/json',

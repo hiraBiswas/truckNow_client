@@ -18,11 +18,12 @@ import { IoMdCheckmarkCircle } from "react-icons/io";
 const Dashboard = () => {
     const [isAdmin] = useAdmin();
   const { user, logOut } = useContext(AuthContext);
+  console.log(user);
 
   const handleSignOut = () => {
     logOut()
-      .then(result => {
-        console.log(result.user);
+      .then(() => {
+        navigate("/login", { replace: true });  // লগআউট হলে login পেজে নিয়ে যাবে
       })
       .catch(error => {
         console.error(error);
